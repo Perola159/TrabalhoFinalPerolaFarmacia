@@ -19,8 +19,8 @@ namespace TrabalhoFinal._02_Repository.DATA
                 string criarTabela = @"   
                  CREATE TABLE IF NOT EXISTS Pessoas(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 Nome TEXT NOT NULL
-                  
+                 Nome TEXT NOT NULL,
+                 EnderecoId INTEGER NOT NULL                  
                 );";
 
                criarTabela += @"   
@@ -31,7 +31,15 @@ namespace TrabalhoFinal._02_Repository.DATA
                  QuantidadeEstoque  NOT NULL
                 );";
 
-              connection.Execute(criarTabela);
+                criarTabela += @"   
+                 CREATE TABLE IF NOT EXISTS Enderecos(
+                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 Rua TEXT NOT NULL,
+                 Bairro TEXT NOT NULL,
+                 Numero INTEGER NOT NULL                  
+                );";
+
+            connection.Execute(criarTabela);
         }
     }
 }

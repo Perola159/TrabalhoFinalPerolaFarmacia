@@ -6,11 +6,11 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PessoaControllers : ControllerBase
+    public class PessoaController : ControllerBase
     {
         public readonly string _ConnectionString;
         private PessoaService _service;
-        public PessoaControllers(IConfiguration configuration)
+        public PessoaController(IConfiguration configuration)
         {
             _ConnectionString = configuration.GetConnectionString("DefaultConnection");
             _service = new PessoaService(_ConnectionString);
