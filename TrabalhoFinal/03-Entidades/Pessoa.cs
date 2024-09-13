@@ -17,8 +17,7 @@ namespace TrabalhoFinal._03_Entidades
         {
             return CPF;
         }
-
-
         public int ID { get; set; }
+        public int EnderecoId { get; set; }
     }
 }

@@ -8,12 +8,12 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProdutoControllers : ControllerBase
+    public class ProdutoController : ControllerBase
     {
         public readonly string _ConnectionString;
         private ProdutoService _service;
         public readonly IMapper _mapper;
-        public ProdutoControllers(IConfiguration configuration,IMapper mapper)
+        public ProdutoController(IConfiguration configuration,IMapper mapper)
         {
             _ConnectionString = configuration.GetConnectionString("DefaultConnection");
             _service = new ProdutoService(_ConnectionString);

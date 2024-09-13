@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrabalhoFinal._02_Repository;
 using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace TrabalhoFinal._01_Services
 {
@@ -13,15 +14,22 @@ namespace TrabalhoFinal._01_Services
     public class PessoaService
     {
         public PessoaRepository repository { get; set; }
+        public EnderecoRepository enderecoRepository { get; set; }
 
         public PessoaService(string configuration)
         {
             repository = new PessoaRepository(configuration);
+            enderecoRepository = new EnderecoRepository(configuration);
         }
 
         public void AdicionarPessoa(Pessoa P)
         {
-            repository.AdicionarContrib(P);
+            Endereco enderecoBanco = enderecoRepository.BuscarEndereco(P.ID);
+            if (enderecoBanco != null)
+            {
+                repository.AdicionarContrib(P);
+            }
+            
         }
 
 
