@@ -8,7 +8,6 @@ namespace TrabalhoFinal._03_Entidades
 {
     public class Pessoa
     {
-        
         public string Nome { get; set; }
 
         private double CPF;

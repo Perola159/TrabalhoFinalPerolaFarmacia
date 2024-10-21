@@ -1,4 +1,5 @@
-﻿using CRUD_DAPPER;
+﻿using AutoMapper;
+using CRUD_DAPPER;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,9 @@ namespace TrabalhoFinal._01_Services
     {
         public ProdutoRepository _repository { get; set; }
 
-        public ProdutoService(string configuration)
+        public ProdutoService(string configuration,  IMapper _mapper)
         {
-            _repository = new ProdutoRepository(configuration);
+            _repository = new ProdutoRepository(configuration, _mapper);
         }
 
         public void AdicionarProduto(Produtos P)

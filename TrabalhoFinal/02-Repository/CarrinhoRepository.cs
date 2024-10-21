@@ -3,17 +3,18 @@ using Dapper;
 using Dapper.Contrib.Extensions;
 using System.Data.SQLite;
 using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace CRUD_DAPPER
 {
-    public class ProdutoRepository
+    public class CarrinhoRepository
     {
         private readonly string ConnectionString;
         private readonly IMapper _mapper;
         private readonly ProdutoRepository _repositoryProduto;
         private readonly PessoaRepository _repositoryPessoa;
         private readonly EnderecoRepository _repositoryEndereco;
-        public ProdutoRepository(string connectioString, IMapper mapper)
+        public CarrinhoRepository(string connectioString, IMapper mapper)
         {
             ConnectionString = connectioString;
             _mapper = mapper;
@@ -22,37 +23,32 @@ namespace CRUD_DAPPER
             _repositoryEndereco = new EnderecoRepository(connectioString);
         }
 
-         public void AdicionarContrib(Produtos P) 
-         {
-         using var connection = new SQLiteConnection(ConnectionString);
-         connection.Insert<Produtos>(P);
-         }
-
-        public List<Produtos> ListarProduto()
+        public void AdicionarContrib(Carrinho C)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Produtos>().ToList(); //TROUXE DO BANCO E RETORNOU A LISTA 
+            connection.Insert<Carrinho>(C);
         }
 
-
-        public Produtos BuscarProdutosPorId(int id)
+        public List<CarrinhoDTO> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Produtos>(id);
+            List<Carrinho> rotinas = connection.GetAll<Carrinho>().ToList();
+            List<CarrinhoDTO> CarrinhosDTO = new List<CarrinhoDTO>();//_mapper.Map<List<ReadRotinaDTO>>(lista);
+            foreach (Carrinho c in rotinas)
+            {
+                 CarrinhoDTO CDTO = new CarrinhoDTO();
+                CDTO.Id = c.Id;
+                CDTO.IdPessoa = c.IdPessoa;
+                CDTO.Pessoa = _repositoryPessoa.BuscarPessoaPorId(c.IdPessoa);
+                CDTO.Produto = _repositoryProduto.BuscarProdutosPorId(c.IdProduto);
+                CarrinhosDTO.Add(CDTO);
+            }
+            return CarrinhosDTO;
         }
-
-        public void EditarProduto( Produtos P)
+        public void EditarProdutoCarrinho(Carrinho c)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Produtos>(P);
-        }
-
-
-        public void RemoverProduto(int id)
-        {
-            using var connection = new SQLiteConnection(ConnectionString);
-            Produtos NovoProduto = BuscarProdutosPorId(id);
-            connection.Delete<Produtos>(NovoProduto);
+            connection.Update<Carrinho>(c);
         }
     }
 }

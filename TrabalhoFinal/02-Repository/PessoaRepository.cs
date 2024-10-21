@@ -29,7 +29,7 @@ namespace CRUD_DAPPER
         }
 
 
-        public Pessoa BuscarPessoa(int id)
+        public Pessoa BuscarPessoaPorId(int id)
         {
             using var connection = new SQLiteConnection(_ConnectionString);
             return connection.Get<Pessoa>(id);
@@ -45,9 +45,10 @@ namespace CRUD_DAPPER
         public void DeletePessoa(int id)
         {
             using var connection = new SQLiteConnection(_ConnectionString);
-            Pessoa NovaPessoa = BuscarPessoa(id);
+            Pessoa NovaPessoa = BuscarPessoaPorId(id);
             connection.Delete<Pessoa>(NovaPessoa);
         }
+
     }
 }
 

@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrabalhoFinal._03_Entidades.DTOS
 {
-    public class CarrinhoCliente
+    namespace TrabalhoFinal._03_Entidades.DTOS
     {
+        public class Carrinho
+        {
+            public int Id { get; set; }
+            public int IdPessoa { get; set; }
+            public int IdProduto { get; set; }
+        }
     }
 }

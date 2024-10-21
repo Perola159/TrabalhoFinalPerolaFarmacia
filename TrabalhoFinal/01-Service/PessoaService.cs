@@ -45,7 +45,7 @@ namespace TrabalhoFinal._01_Services
 
         public Pessoa BuscarPorId(int id)
         {
-            return repository.BuscarPessoa(id);
+            return repository.BuscarPessoaPorId(id);
         }
 
 

@@ -15,8 +15,8 @@ namespace API.Controllers
         public readonly IMapper _mapper;
         public ProdutoController(IConfiguration configuration,IMapper mapper)
         {
-            _ConnectionString = configuration.GetConnectionString("DefaultConnection");
-            _service = new ProdutoService(_ConnectionString);
+            string config = configuration.GetConnectionString("DefaultConnection");
+            _service = new ProdutoService(config, mapper);
             _mapper = mapper;
         }
 

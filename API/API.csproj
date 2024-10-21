@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="PerolinhaFarmacêutica.db" />
     <None Remove="Properties\launchSettings.json" />
   </ItemGroup>
 

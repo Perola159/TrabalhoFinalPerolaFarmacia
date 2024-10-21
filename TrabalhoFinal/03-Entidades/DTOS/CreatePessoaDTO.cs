@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrabalhoFinal._03_Entidades.DTOS
 {
-    internal class Frete
+    public class CreatePessoaDTO
     {
+ 
+        public string Nome { get; set; }
+        public string Endereco { get; set; }
+        public Pessoa Pessoa { get; set; }
+
+
     }
 }

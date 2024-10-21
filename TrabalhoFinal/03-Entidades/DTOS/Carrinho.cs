@@ -1,0 +1,21 @@
+﻿using Dapper.Contrib.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TrabalhoFinal._03_Entidades
+{
+    [Table("Carrinho")]
+    public class Carrinho
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public int IdProduto{ get; set; }
+
+        public int IdPessoa { get; set; }
+
+
+    }
+}

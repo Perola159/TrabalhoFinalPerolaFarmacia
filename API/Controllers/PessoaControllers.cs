@@ -32,8 +32,7 @@ namespace API.Controllers
         [HttpDelete("Remover-pessoa")]
         public void RemoverPessoa(int id)
         {
-            _service.RemoverPessoa(id); //controller chama a service passando --
-                                        //parametro por id (que seria o id do time para executar a remoção)
+            _service.RemoverPessoa(id); 
         }
 
         [HttpPut("Editar-Pessoa")]
