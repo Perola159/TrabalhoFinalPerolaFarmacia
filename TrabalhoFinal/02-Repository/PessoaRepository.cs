@@ -1,11 +1,12 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using System.Data.SQLite;
+using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 
 namespace CRUD_DAPPER
 {
-    public class PessoaRepository
+    public class PessoaRepository : IPessoaRepositorycs
     {
         public readonly string _ConnectionString;
 
@@ -16,7 +17,7 @@ namespace CRUD_DAPPER
         }
 
 
-        public void AdicionarContrib(Pessoa P)
+        public void AdicionarPessoa(Pessoa P)
         {
             using var connection = new SQLiteConnection(_ConnectionString);
             connection.Insert<Pessoa>(P);

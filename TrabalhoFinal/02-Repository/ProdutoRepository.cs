@@ -2,17 +2,18 @@
 using Dapper;
 using Dapper.Contrib.Extensions;
 using System.Data.SQLite;
+using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 
 namespace CRUD_DAPPER
 {
-    public class ProdutoRepository
+    public class ProdutoRepository : IProdutoRepository
     {
         private readonly string ConnectionString;
         private readonly IMapper _mapper;
-        private readonly ProdutoRepository _repositoryProduto;
-        private readonly PessoaRepository _repositoryPessoa;
-        private readonly EnderecoRepository _repositoryEndereco;
+        private readonly IProdutoRepository _repositoryProduto;
+        private readonly IPessoaRepositorycs _repositoryPessoa;
+        private readonly IEnderecoRepository _repositoryEndereco;
         public ProdutoRepository(string connectioString, IMapper mapper)
         {
             ConnectionString = connectioString;

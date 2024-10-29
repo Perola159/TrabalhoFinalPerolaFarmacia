@@ -20,7 +20,8 @@ namespace TrabalhoFinal._02_Repository.DATA
                  CREATE TABLE IF NOT EXISTS Pessoas(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
                  Nome TEXT NOT NULL,
-                 EnderecoId INTEGER NOT NULL                  
+                 EnderecoId INTEGER NOT NULL  ,
+                 CPF REAL NOT NULL
                 );";
 
                criarTabela += @"   

@@ -1,11 +1,5 @@
 ﻿using AutoMapper;
-using CRUD_DAPPER;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrabalhoFinal._02_Repository;
+using CRUD_DAPPER;using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 
 namespace TrabalhoFinal._01_Services
@@ -13,7 +7,7 @@ namespace TrabalhoFinal._01_Services
 
     public class ProdutoService
     {
-        public ProdutoRepository _repository { get; set; }
+        public IProdutoRepository _repository { get; set; }
 
         public ProdutoService(string configuration,  IMapper _mapper)
         {

@@ -10,7 +10,5 @@ namespace TrabalhoFinal._03_Entidades.DTOS
     {
         public string Nome { get; set; }
         public int Preco { get; set; }
-     
-       
     }
 }

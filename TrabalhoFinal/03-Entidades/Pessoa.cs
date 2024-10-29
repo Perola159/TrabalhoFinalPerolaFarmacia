@@ -10,7 +10,7 @@ namespace TrabalhoFinal._03_Entidades
     {
         public string Nome { get; set; }
 
-        private double CPF;
+        public double CPF;
 
         public double buscarcpf()
         {

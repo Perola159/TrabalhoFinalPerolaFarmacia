@@ -1,11 +1,5 @@
 ﻿using CRUD_DAPPER;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrabalhoFinal._02_Repository;
-using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace TrabalhoFinal._01_Services
@@ -13,7 +7,7 @@ namespace TrabalhoFinal._01_Services
 
     public class EnderecoService
     {
-        public EnderecoRepository repository { get; set; }
+        public IEnderecoRepository repository { get; set; }
 
         public EnderecoService(string configuration)
         {

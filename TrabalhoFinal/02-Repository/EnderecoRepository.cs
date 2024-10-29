@@ -1,12 +1,13 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using System.Data.SQLite;
+using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace CRUD_DAPPER
 {
-    public class EnderecoRepository
+    public class EnderecoRepository : IEnderecoRepository
     {
         public readonly string _ConnectionString;
 
@@ -37,7 +38,7 @@ namespace CRUD_DAPPER
         }
 
         public void EditarEndereco(Endereco P)
-        {
+                     {
             using var connection = new SQLiteConnection(_ConnectionString);
             connection.Update<Endereco>(P);
         }
