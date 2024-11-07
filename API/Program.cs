@@ -1,7 +1,9 @@
 using API;
+using CRUD_DAPPER;
 using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._01_Services;
 using TrabalhoFinal._02_Repository.DATA;
+using TrabalhoFinal._02_Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,11 +25,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MapProfile));
 InicializadorBd.Inicializar();
 
-
-builder.Services.AddScoped<ICarrinhoService, CarrinhoService>();
+//builder.Services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
+//builder.Services.AddScoped<ICarrinhoService, CarrinhoService>();
+builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IEnderecoService, EnderecoService>();
-builder.Services.AddScoped<IPessoaService, PessoaService>();
-builder.Services.AddScoped<IProdutoService, ProdutoService>();
+//builder.Services.AddScoped<IPessoaRepositorycs, PessoaRepository>();
+//builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+
+
+
+//builder.Services.AddScoped<IPessoaService, PessoaService>();
+//builder.Services.AddScoped<IProdutoService, ProdutoService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

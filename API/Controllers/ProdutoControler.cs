@@ -13,15 +13,13 @@ namespace API.Controllers
         public readonly IProdutoService _service;
         
   
-        public ProdutoController(IProdutoService configuration)
+        public ProdutoController(IProdutoService serv)
         {
-          
-            _service = configuration;
-       
+            _service = serv;
         }
 
         [HttpPost("adicionar-produto")]
-        public void AdicionarProduto(CreateProdutoDTO P)
+        public void AdicionarProduto(Produtos P)
         {
             _service.AdicionarProduto(P);
         }

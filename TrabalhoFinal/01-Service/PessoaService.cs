@@ -1,4 +1,5 @@
 ﻿using CRUD_DAPPER;
+using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 using TrabalhoFinal._03_Entidades.DTOS;
@@ -6,7 +7,7 @@ using TrabalhoFinal._03_Entidades.DTOS;
 namespace TrabalhoFinal._01_Services
 {
 
-    public class PessoaService
+    public class PessoaService : IPessoaService
     {
         private string _ConnectionString;
         public EnderecoRepository enderecoRepository { get; set; }

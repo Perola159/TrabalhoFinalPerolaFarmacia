@@ -1,11 +1,12 @@
 ﻿using CRUD_DAPPER;
+using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace TrabalhoFinal._01_Services
 {
 
-    public class EnderecoService
+    public class EnderecoService : IEnderecoService
     {
       
         private readonly IEnderecoRepository repository;
