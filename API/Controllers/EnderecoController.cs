@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._01_Services;
 using TrabalhoFinal._03_Entidades.DTOS;
 
@@ -8,19 +10,23 @@ namespace API.Controllers
     [Route("[controller]")]
     public class EnderecoController : ControllerBase
     {
-        public readonly string _ConnectionString;
-        private EnderecoService _service;
-        public EnderecoController(IConfiguration configuration)
+        public readonly IEnderecoService _service;
+        
+        public EnderecoController(  IEnderecoService service)
         {
-            _ConnectionString = configuration.GetConnectionString("DefaultConnection");
-            _service = new EnderecoService(_ConnectionString);
+            _service= service;
         }
 
+        /// <summary>
+        /// Endpoint para criar usuarios no banco de dados 
+        /// </summary>
+        /// <param name="end"></param>
+        /// 
 
         [HttpPost("adicionar-Endereco")]
-        public void AdicionarEndereco(Endereco P)
+        public void AdicionarEndereco(Endereco end)
         {
-            _service.AdicionarEndereco(P);
+            _service.AdicionarEndereco(end);
         }
 
         [HttpGet("listar-Endereco")]

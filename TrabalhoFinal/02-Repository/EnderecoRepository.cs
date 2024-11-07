@@ -1,22 +1,27 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 using System.Data.SQLite;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
+
 using TrabalhoFinal._03_Entidades.DTOS;
+using static CRUD_DAPPER.EnderecoRepository;
 
 namespace CRUD_DAPPER
 {
     public class EnderecoRepository : IEnderecoRepository
     {
         public readonly string _ConnectionString;
+        IEnderecoRepository _repositoryendereco;
 
 
-        public EnderecoRepository(string configuration)
+        public EnderecoRepository(IConfiguration config, IEnderecoRepository repos)
         {
-            _ConnectionString = configuration;
-        }
+            _ConnectionString = config.GetConnectionString("DefaultConnection");
+            _repositoryendereco = repos;
 
+        }
 
         public void AdicionarContrib(Endereco P)
         {
@@ -47,8 +52,8 @@ namespace CRUD_DAPPER
         public void DeleteEndereco(int id)
         {
             using var connection = new SQLiteConnection(_ConnectionString);
-            Endereco NovaEndereco = BuscarEndereco(id);
-            connection.Delete<Endereco>(NovaEndereco);
+            Endereco NovoEndereco = BuscarEndereco(id);
+            connection.Delete<Endereco>(NovoEndereco);
         }
     }
 }

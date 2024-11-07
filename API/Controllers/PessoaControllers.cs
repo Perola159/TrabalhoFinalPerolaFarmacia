@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._01_Services;
 using TrabalhoFinal._03_Entidades;
 
@@ -8,16 +9,15 @@ namespace API.Controllers
     [Route("[controller]")]
     public class PessoaController : ControllerBase
     {
-        public readonly string _ConnectionString;
-        private PessoaService _service;
-        public PessoaController(IConfiguration configuration)
+        public readonly  IPessoaService _service;
+
+        public PessoaController(IPessoaService config)
         {
-            _ConnectionString = configuration.GetConnectionString("DefaultConnection");
-            _service = new PessoaService(_ConnectionString);
+            _service = config; //injecao de independecia aplicada 
         }
 
 
-        [HttpPost("adicionar-pessoa")]
+            [HttpPost("adicionar-pessoa")]
         public void AdicionarPessoa(Pessoa P)
         {
             _service.AdicionarPessoa(P);

@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 using System.Data.SQLite;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
@@ -9,13 +10,14 @@ namespace CRUD_DAPPER
     public class PessoaRepository : IPessoaRepositorycs
     {
         public readonly string _ConnectionString;
+        IPessoaRepositorycs _repositoryPessoa;
 
 
-        public PessoaRepository(string configuration)
+        public PessoaRepository(IConfiguration config, IPessoaRepositorycs repos)
         {
-            _ConnectionString = configuration;
+             _ConnectionString = config.GetConnectionString("DefaultConnection");
+             _repositoryPessoa = repos;
         }
-
 
         public void AdicionarPessoa(Pessoa P)
         {

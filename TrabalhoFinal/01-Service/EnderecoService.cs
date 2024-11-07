@@ -7,11 +7,12 @@ namespace TrabalhoFinal._01_Services
 
     public class EnderecoService
     {
-        public IEnderecoRepository repository { get; set; }
+      
+        private readonly IEnderecoRepository repository;
 
-        public EnderecoService(string configuration)
+        public EnderecoService(IEnderecoRepository configuration)
         {
-            repository = new EnderecoRepository(configuration);
+            repository = configuration;
         }
 
         public void AdicionarEndereco(Endereco P)

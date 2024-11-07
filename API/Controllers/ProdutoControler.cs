@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TrabalhoFinal._01_Services;
+using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._03_Entidades;
 using TrabalhoFinal._03_Entidades.DTOS;
 
@@ -10,22 +10,20 @@ namespace API.Controllers
     [Route("[controller]")]
     public class ProdutoController : ControllerBase
     {
-        public readonly string _ConnectionString;
-        private ProdutoService _service;
-        public readonly IMapper _mapper;
-        public ProdutoController(IConfiguration configuration,IMapper mapper)
+        public readonly IProdutoService _service;
+        
+  
+        public ProdutoController(IProdutoService configuration)
         {
-            string config = configuration.GetConnectionString("DefaultConnection");
-            _service = new ProdutoService(config, mapper);
-            _mapper = mapper;
+          
+            _service = configuration;
+       
         }
-
 
         [HttpPost("adicionar-produto")]
         public void AdicionarProduto(CreateProdutoDTO P)
         {
-            Produtos prod =_mapper.Map<Produtos>(P);
-            _service.AdicionarProduto(prod);
+            _service.AdicionarProduto(P);
         }
 
         [HttpGet("listar-Produto")]
@@ -40,8 +38,7 @@ namespace API.Controllers
         [HttpDelete("Remover-produto")]
         public void RemoverProduto(int id)
         {
-            _service.RemoverProduto(id); //controller chama a service passando --
-                                        //parametro por id (que seria o id do time para executar a remoção)
+            _service.RemoverProduto(id); 
         }
 
         [HttpPut("Editar-produto")]

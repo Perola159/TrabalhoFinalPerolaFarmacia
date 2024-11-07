@@ -9,15 +9,15 @@ namespace TrabalhoFinal._01_Services
     public class PessoaService
     {
         private string _ConnectionString;
-
-        public IPessoaRepositorycs Repository { get; set; }
         public EnderecoRepository enderecoRepository { get; set; }
 
-        public PessoaService(string configuration)
+        private readonly IPessoaRepositorycs Repository;
+        public PessoaService(IPessoaRepositorycs  configuration)
         {
-            Repository = new PessoaRepository(configuration);
-            enderecoRepository = new EnderecoRepository(configuration);
+            Repository = (configuration);
+     
         }
+
 
         public void AdicionarPessoa(Pessoa P)
         {

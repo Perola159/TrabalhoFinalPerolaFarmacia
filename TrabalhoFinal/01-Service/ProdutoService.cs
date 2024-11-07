@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using CRUD_DAPPER;using TrabalhoFinal._02_Repository.Interfaces;
+using CRUD_DAPPER;
+using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 
 namespace TrabalhoFinal._01_Services
@@ -7,11 +8,11 @@ namespace TrabalhoFinal._01_Services
 
     public class ProdutoService
     {
-        public IProdutoRepository _repository { get; set; }
+        private readonly IProdutoRepository _repository;
 
-        public ProdutoService(string configuration,  IMapper _mapper)
+        public ProdutoService(IProdutoRepository configu)
         {
-            _repository = new ProdutoRepository(configuration, _mapper);
+            _repository = configu ;
         }
 
         public void AdicionarProduto(Produtos P)

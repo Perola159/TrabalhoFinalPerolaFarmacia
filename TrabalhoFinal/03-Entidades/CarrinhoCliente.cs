@@ -8,7 +8,7 @@ namespace TrabalhoFinal._03_Entidades.DTOS
 {
     namespace TrabalhoFinal._03_Entidades.DTOS
     {
-        public class Carrinho
+        public class Carrinho 
         {
             public int Id { get; set; }
             public int IdPessoa { get; set; }

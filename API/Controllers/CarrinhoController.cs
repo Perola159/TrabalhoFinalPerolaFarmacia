@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._01_Services;
 using TrabalhoFinal._03_Entidades;
 using TrabalhoFinal._03_Entidades.DTOS;
@@ -9,23 +10,23 @@ namespace API.Controllers;
 [Route("[controller]")]
 public class CarrinhoController : ControllerBase
 {
-    private readonly IMapper _mapper;
-    private readonly CarrinhoService _service;
+    private readonly ICarrinhoService _service;
+    
 
-    public CarrinhoController(IConfiguration config, IMapper mapper)
+    public CarrinhoController( ICarrinhoService service)
     {
-        string _config = config.GetConnectionString("DefaultConnection");
-        _service = new CarrinhoService(_config, mapper);
-        _mapper = mapper;
+   
+        _service=service;
+
     }
 
-
-    [HttpPost("Adicionar-carrinho")]
+        [HttpPost("Adicionar-carrinho")]
     public void AdicionarProdutoCarrinho(Carrinho carrinho)
     {
-        //Pessoa pessoa = _mapper.Map<Pessoa>(pessoaDTO);
+        
         _service.AdicionarProdutoCarrinho(carrinho);
     }
+
     [HttpGet("Listar-carrinho")]
     public List<CarrinhoDTO> Listar()
     {

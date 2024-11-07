@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrabalhoFinal._03_Entidades.DTOS;
 
+
 namespace TrabalhoFinal._02_Repository.Interfaces
 {
     public interface IEnderecoRepository

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 using System.Data.SQLite;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
@@ -10,20 +11,18 @@ namespace CRUD_DAPPER
     public class ProdutoRepository : IProdutoRepository
     {
         private readonly string ConnectionString;
-        private readonly IMapper _mapper;
+    
         private readonly IProdutoRepository _repositoryProduto;
-        private readonly IPessoaRepositorycs _repositoryPessoa;
-        private readonly IEnderecoRepository _repositoryEndereco;
-        public ProdutoRepository(string connectioString, IMapper mapper)
+
+      
+        public ProdutoRepository(IConfiguration config, IProdutoRepository repos)
         {
-            ConnectionString = connectioString;
-            _mapper = mapper;
-            _repositoryProduto = new ProdutoRepository(connectioString, mapper);
-            _repositoryPessoa = new PessoaRepository(connectioString);
-            _repositoryEndereco = new EnderecoRepository(connectioString);
+            ConnectionString = config.GetConnectionString("DefaultConnection");
+            _repositoryProduto= repos;
         }
 
-         public void AdicionarContrib(Produtos P) 
+
+        public void AdicionarContrib(Produtos P) 
          {
          using var connection = new SQLiteConnection(ConnectionString);
          connection.Insert<Produtos>(P);

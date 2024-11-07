@@ -15,13 +15,14 @@ namespace CRUD_DAPPER
         private readonly IProdutoRepository _repositoryProduto;
         private readonly IPessoaRepositorycs _repositoryPessoa;
         private readonly IEnderecoRepository _repositoryEndereco;
-        public CarrinhoRepository(string connectioString, IMapper mapper)
+        public CarrinhoRepository(string connectioString, IMapper mapper, IProdutoRepository prdt_repos, IPessoaRepositorycs pessoa_repos, IEnderecoRepository end_repos)
         {
             ConnectionString = connectioString;
             _mapper = mapper;
-            _repositoryProduto = new ProdutoRepository(connectioString, mapper);
-            _repositoryPessoa = new PessoaRepository(connectioString);
-            _repositoryEndereco = new EnderecoRepository(connectioString);
+            _repositoryProduto = prdt_repos;
+            _repositoryPessoa = pessoa_repos;
+            _repositoryEndereco= end_repos;
+          
         }
 
         public void AdicionarContrib(Carrinho C)
