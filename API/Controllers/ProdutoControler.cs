@@ -17,21 +17,36 @@ namespace API.Controllers
         {
             _service = serv;
         }
-
+        /// <summary>
+        /// Adiciona um produto no banco de dados 
+        /// </summary>
+        /// <param name="P"></param>
+        /// 
         [HttpPost("adicionar-produto")]
         public void AdicionarProduto(Produtos P)
         {
             _service.AdicionarProduto(P);
         }
 
-        [HttpGet("listar-Produto")]
-        //public List<ProdutoListagemDTO> ListarProduto(ProdutoListagemDTO P)
-        //{
-        //    Produtos prod = _mapper.Map<Produtos>(P);
-        //    List<ProdutoListagemDTO> list = _service.listarProduto();
 
-        //    return list;
-        //}
+        /// <summary>
+        /// Lista os produtos que o usuário adicionou no banco
+        /// </summary>
+        /// <param name="P"></param>
+        /// <returns></returns>
+        [HttpGet("listar-Produto")]
+        public List<ProdutoListagemDTO> ListarProduto(ProdutoListagemDTO P)
+        {
+            Produtos prod = _mapper.Map<Produtos>(P);
+            List<ProdutoListagemDTO> list = _service.listarProduto();
+
+            return list;
+        }
+
+        /// <summary>
+        /// deleta os produtos adicionados pelo usuário
+        /// </summary>
+        /// <param name="id"></param>
 
         [HttpDelete("Remover-produto")]
         public void RemoverProduto(int id)
@@ -39,6 +54,10 @@ namespace API.Controllers
             _service.RemoverProduto(id); 
         }
 
+        /// <summary>
+        /// Edita os produtos já adiconados no banco
+        /// </summary>
+        /// <param name="P"></param>
         [HttpPut("Editar-produto")]
         public void EditarProduto(Produtos P)
         {

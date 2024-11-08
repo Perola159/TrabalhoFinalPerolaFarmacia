@@ -16,12 +16,22 @@ namespace API.Controllers
             _service = config; //injecao de independecia aplicada 
         }
 
+        /// <summary>
+        /// Adiciona pessoa no banco de dados
+        /// </summary>
+        /// <param name="P"></param>
 
             [HttpPost("adicionar-pessoa")]
         public void AdicionarPessoa(Pessoa P)
         {
             _service.AdicionarPessoa(P);
+           
         }
+
+        /// <summary>
+        /// Lista todas as pessoas cadastradas na Farmácia do Banco de dados
+        /// </summary>
+        /// <returns></returns>
 
         [HttpGet("listar-Pessoa")]
         public List<Pessoa> ListarPessoa()
@@ -29,12 +39,22 @@ namespace API.Controllers
            return _service.ListarPessoa();
         }
 
+
+        /// <summary>
+        ///Deleta uma pessoa do banco de dados por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// 
         [HttpDelete("Remover-pessoa")]
         public void RemoverPessoa(int id)
         {
             _service.RemoverPessoa(id); 
         }
 
+        /// <summary>
+        /// Edita pessoa do banco de dados por id
+        /// </summary>
+        /// <param name="P"></param>
         [HttpPut("Editar-Pessoa")]
         public void EditarPessoa(Pessoa P)
         {
