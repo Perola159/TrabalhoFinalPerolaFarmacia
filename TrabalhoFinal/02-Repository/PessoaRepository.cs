@@ -10,13 +10,9 @@ namespace CRUD_DAPPER
     public class PessoaRepository : IPessoaRepositorycs
     {
         public readonly string _ConnectionString;
-        IPessoaRepositorycs _repositoryPessoa;
-
-
-        public PessoaRepository(IConfiguration config, IPessoaRepositorycs repos)
+        public PessoaRepository(IConfiguration config)
         {
              _ConnectionString = config.GetConnectionString("DefaultConnection");
-             _repositoryPessoa = repos;
         }
 
         public void AdicionarPessoa(Pessoa P)

@@ -11,12 +11,12 @@ namespace API.Controllers;
 public class CarrinhoController : ControllerBase
 {
     private readonly ICarrinhoService _service;
-    
 
-    public CarrinhoController( ICarrinhoService service)
+
+    public CarrinhoController(ICarrinhoService service)
     {
-   
-        _service=service;
+
+        _service = service;
 
     }
 
@@ -26,11 +26,20 @@ public class CarrinhoController : ControllerBase
     /// </summary>
     /// <param name="carrinho"></param>
     /// 
-        [HttpPost("Adicionar-carrinho")]
-    public void AdicionarProdutoCarrinho(Carrinho carrinho)
+    [HttpPost("Adicionar-carrinho")]
+    public IActionResult AdicionarProdutoCarrinho(Carrinho carrinho)
     {
-        
-        _service.AdicionarProdutoCarrinho(carrinho);
+        try
+        {
+            _service.AdicionarProdutoCarrinho(carrinho);
+            return Ok();
+        }
+        catch (Exception erro)
+        {
+            return BadRequest ("Ocorreu um erro +" +
+                "o erro foi: " + erro.Message);
+          
+        }
     }
 
 
@@ -41,27 +50,59 @@ public class CarrinhoController : ControllerBase
     [HttpGet("Listar-carrinho")]
     public List<CarrinhoDTO> Listar()
     {
-        return _service.ListarProdutoCarrinho();
+        try
+        {
+            return _service.ListarProdutoCarrinho();
+        }
+        catch (Exception)
+        {
+            throw new Exception("Ocorreu um erro ao listar carrinho" );
+        }
+        
     }
 
     /// <summary>
     /// Edita os produtos selecionados pelo usuário do carrinho
     /// </summary>
     /// <param name="c"></param>
+    /// 
     [HttpPut("editar-Carrinho")]
-    public void EditarProdutoCarrinho(Carrinho c)
+    public IActionResult EditarProdutoCarrinho(Carrinho c)
     {
-        _service.EditarProdutoCarrinho(c);
+        try
+        {
+            _service.EditarProdutoCarrinho(c);
+            return Ok();
+        }
+        catch (Exception erro)
+        {
+            return BadRequest("Ocorreu um erro +" +
+                "o erro foi: " + erro.Message);
+
+        }
+        
     }
+
 
     /// <summary>
     /// Delete o produto selecionado por ID
     /// </summary>
     /// <param name="c"></param>
     [HttpDelete("deletar-Produto-do-Carrinho")]
-    public void DeletarProdutoCarrinho(Carrinho c)
+    public IActionResult DeletarProdutoCarrinho(Carrinho c)
     {
-        _service.EditarProdutoCarrinho(c);
+        try
+        {
+            _service.EditarProdutoCarrinho(c);
+            return Ok();
+        }
+        catch (Exception erro)
+        {
+            return BadRequest("Ocorreu um erro +" +
+                "o erro foi: " + erro.Message);
+
+        }
+      
     }
 }
 

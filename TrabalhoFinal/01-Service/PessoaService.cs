@@ -9,49 +9,50 @@ namespace TrabalhoFinal._01_Services
 
     public class PessoaService : IPessoaService
     {
-        private string _ConnectionString;
-        public EnderecoRepository enderecoRepository { get; set; }
+        private readonly IPessoaRepositorycs _repository;
+        private readonly IEnderecoRepository _repositoryEndereco;
 
-        private readonly IPessoaRepositorycs Repository;
-        public PessoaService(IPessoaRepositorycs  configuration)
+        public PessoaService(IPessoaRepositorycs repository, IEnderecoRepository repositoryy)
         {
-            Repository = (configuration);
-     
+            _repository = repository;
+            _repositoryEndereco = repositoryy;
         }
 
 
         public void AdicionarPessoa(Pessoa P)
         {
-            Endereco endercoBanco = enderecoRepository.BuscarEndereco(P.EnderecoId);
-            if(endercoBanco != null )
+            Endereco endercoBanco = _repositoryEndereco.BuscarEndereco(P.EnderecoId);
+            if (endercoBanco != null)
             {
-                Repository.AdicionarPessoa(P);
-            }    
+                _repository.AdicionarPessoa(P);
+            }
+
         }
+  
 
 
         public void RemoverPessoa(int id)
         {
-            Repository.DeletePessoa(id);
+            _repository.DeletePessoa(id);
         }
 
         public List<Pessoa> ListarPessoa()
         {
-            return Repository.ListarPessoa();
+            return _repository.ListarPessoa();
         }
 
         public Pessoa BuscarPorId(int id)
         {
-            return Repository.BuscarPessoaPorId(id);
+            return _repository.BuscarPessoaPorId(id);
         }
 
 
 
-        public void EditarPessoa(Pessoa P )
+        public void EditarPessoa(Pessoa P)
         {
-            Repository.EditarPessoa(P);
+            _repository.EditarPessoa(P);
         }
 
-       
+
     }
 }

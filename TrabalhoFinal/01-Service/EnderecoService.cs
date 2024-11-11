@@ -8,7 +8,7 @@ namespace TrabalhoFinal._01_Services
 
     public class EnderecoService : IEnderecoService
     {
-      
+
         private readonly IEnderecoRepository repository;
 
         public EnderecoService(IEnderecoRepository configuration)
@@ -39,11 +39,11 @@ namespace TrabalhoFinal._01_Services
 
 
 
-        public void EditarEndereco(Endereco P )
+        public void EditarEndereco(Endereco P)
         {
             repository.EditarEndereco(P);
         }
 
-       
+
     }
 }

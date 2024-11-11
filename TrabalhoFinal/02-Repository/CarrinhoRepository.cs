@@ -1,6 +1,5 @@
-﻿using AutoMapper;
-using Dapper;
-using Dapper.Contrib.Extensions;
+﻿using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 using System.Data.SQLite;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
@@ -11,18 +10,14 @@ namespace CRUD_DAPPER
     public class CarrinhoRepository : ICarrinhoRepository
     {
         private readonly string ConnectionString;
-        private readonly IMapper _mapper;
+
         private readonly IProdutoRepository _repositoryProduto;
         private readonly IPessoaRepositorycs _repositoryPessoa;
-        private readonly IEnderecoRepository _repositoryEndereco;
-        public CarrinhoRepository(string connectioString, IMapper mapper, IProdutoRepository prdt_repos, IPessoaRepositorycs pessoa_repos, IEnderecoRepository end_repos)
+        public CarrinhoRepository(IConfiguration connect,  IProdutoRepository prdt_repos, IPessoaRepositorycs pessoa_repos, IEnderecoRepository end_repos)
         {
-            ConnectionString = connectioString;
-            _mapper = mapper;
+            ConnectionString = connect.GetConnectionString("DefaultConnection");
             _repositoryProduto = prdt_repos;
             _repositoryPessoa = pessoa_repos;
-            _repositoryEndereco= end_repos;
-          
         }
 
         public void AdicionarContrib(Carrinho C)
@@ -38,10 +33,10 @@ namespace CRUD_DAPPER
             List<CarrinhoDTO> CarrinhosDTO = new List<CarrinhoDTO>();//_mapper.Map<List<ReadRotinaDTO>>(lista);
             foreach (Carrinho c in rotinas)
             {
-                 CarrinhoDTO CDTO = new CarrinhoDTO();
+                CarrinhoDTO CDTO = new CarrinhoDTO();
                 CDTO.Id = c.Id;
                 CDTO.IdPessoa = c.IdPessoa;
-                CDTO.Pessoa = _repositoryPessoa.BuscarPessoaPorId(c.IdPessoa);
+                //CDTO.Pessoa = _repositoryPessoa.BuscarPessoaPorId(c.IdPessoa);
                 CDTO.Produto = _repositoryProduto.BuscarProdutosPorId(c.IdProduto);
                 CarrinhosDTO.Add(CDTO);
             }

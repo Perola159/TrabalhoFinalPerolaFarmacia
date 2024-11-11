@@ -9,7 +9,7 @@ using static TrabalhoFinal._01_Services.CarrinhoService;
 namespace TrabalhoFinal._01_Services
 {
 
-    public class CarrinhoService:ICarrinhoService
+    public class CarrinhoService : ICarrinhoService
     {
         private readonly ICarrinhoRepository _repository;
 
@@ -18,7 +18,7 @@ namespace TrabalhoFinal._01_Services
             _repository = config;
         }
 
-            public void AdicionarProdutoCarrinho(Carrinho C)
+        public void AdicionarProdutoCarrinho(Carrinho C)
         {
             _repository.AdicionarContrib(C);
         }
@@ -28,7 +28,7 @@ namespace TrabalhoFinal._01_Services
             return _repository.Listar();
         }
 
-        public void EditarProdutoCarrinho(Carrinho c )
+        public void EditarProdutoCarrinho(Carrinho c)
         {
             _repository.EditarProdutoCarrinho(c);
         }

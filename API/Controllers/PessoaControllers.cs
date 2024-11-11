@@ -11,9 +11,9 @@ namespace API.Controllers
     {
         public readonly  IPessoaService _service;
 
-        public PessoaController(IPessoaService config)
+        public PessoaController(IPessoaService service)
         {
-            _service = config; //injecao de independecia aplicada 
+            _service = service; //injecao de independecia aplicada 
         }
 
         /// <summary>

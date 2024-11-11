@@ -13,7 +13,7 @@ namespace TrabalhoFinal._01_Services
 
         public ProdutoService(IProdutoRepository configu)
         {
-            _repository = configu ;
+            _repository = configu;
         }
 
         public void AdicionarProduto(Produtos P)
@@ -39,7 +39,7 @@ namespace TrabalhoFinal._01_Services
 
 
 
-        public void EditarProduto( Produtos p)
+        public void EditarProduto(Produtos p)
         {
             _repository.EditarProduto(p);
         }

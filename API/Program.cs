@@ -35,14 +35,18 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddAutoMapper(typeof(MapProfile));
 InicializadorBd.Inicializar();
 
-builder.Services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
 builder.Services.AddScoped<ICarrinhoService, CarrinhoService>();
-//builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+builder.Services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
+
+builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IEnderecoService, EnderecoService>();
-builder.Services.AddScoped<IPessoaRepositorycs, PessoaRepository>();
-builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+
 builder.Services.AddScoped<IPessoaService, PessoaService>();
+builder.Services.AddScoped<IPessoaRepositorycs, PessoaRepository>();
+
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
 var app = builder.Build();
 
@@ -50,7 +54,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "A.P.I v1");
+    });
 }
 
 app.UseHttpsRedirection();

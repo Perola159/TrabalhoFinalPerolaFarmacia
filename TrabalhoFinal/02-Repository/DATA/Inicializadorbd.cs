@@ -10,13 +10,13 @@ namespace TrabalhoFinal._02_Repository.DATA
 {
     public static class InicializadorBd
     {
-        
+
 
         public static void Inicializar()
         {
             using var connection = new SQLiteConnection("Data Source=PerolinhaFarmacêutica.db"); //criar conexão
-            
-                string criarTabela = @"   
+
+            string criarTabela = @"   
                  CREATE TABLE IF NOT EXISTS Pessoas(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
                  Nome TEXT NOT NULL,
@@ -24,7 +24,7 @@ namespace TrabalhoFinal._02_Repository.DATA
                  CPF REAL NOT NULL
                 );";
 
-               criarTabela += @"   
+            criarTabela += @"   
                  CREATE TABLE IF NOT EXISTS Produtos(
                  Nome TEXT NOT NULL,
                  Preco  NOT NULL,
@@ -32,7 +32,7 @@ namespace TrabalhoFinal._02_Repository.DATA
                  QuantidadeEstoque  NOT NULL
                 );";
 
-                criarTabela += @"   
+            criarTabela += @"   
                  CREATE TABLE IF NOT EXISTS Enderecos(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
                  Rua TEXT NOT NULL,
@@ -40,7 +40,12 @@ namespace TrabalhoFinal._02_Repository.DATA
                  Numero INTEGER NOT NULL                  
                 );";
 
-            connection.Execute(criarTabela);
+            criarTabela += @"   
+                 CREATE TABLE IF NOT EXISTS Carrinhos(
+                 IdProduto INT INTEGER PRIMARY KEY AUTOINCREMENT,
+                 IdPessoa INTEGER NOT NULL                  
+                );";
+
         }
     }
 }

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="M:API.Controllers.CarrinhoController.AdicionarProdutoCarrinho(TrabalhoFinal._03_Entidades.Carrinho)">
+            <summary>
+            Adiciona os produtos do usuario logado no carrinho 
+            </summary>
+            <param name="carrinho"></param>
+            
+        </member>
+        <member name="M:API.Controllers.CarrinhoController.Listar">
+            <summary>
+            Lista os produtos que o usuário selecionou no carrinho 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.CarrinhoController.EditarProdutoCarrinho(TrabalhoFinal._03_Entidades.Carrinho)">
+            <summary>
+            Edita os produtos selecionados pelo usuário do carrinho
+            </summary>
+            <param name="c"></param>
+            
+        </member>
+        <member name="M:API.Controllers.CarrinhoController.DeletarProdutoCarrinho(TrabalhoFinal._03_Entidades.Carrinho)">
+            <summary>
+            Delete o produto selecionado por ID
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:API.Controllers.EnderecoController.#ctor(TrabalhoFinal._01_Service.Interfaces.IEnderecoService)">
+            <summary>
+            Endpoint para criar usuarios no banco de dados 
+            </summary>
+            <param name="end"></param>
+            
+        </member>
+        <member name="M:API.Controllers.EnderecoController.AdicionarEndereco(TrabalhoFinal._03_Entidades.DTOS.Endereco)">
+            <summary>
+            Adiciona endereco do usuário 
+            </summary>
+            <param name="end"></param>
+        </member>
+        <member name="M:API.Controllers.EnderecoController.ListarEndereco">
+            <summary>
+            Lista os endereços dos usuários cadastrados 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.EnderecoController.RemoverEndereco(System.Int32)">
+            <summary>
+            Deleta o endereço selecionado por ID
+            </summary>
+            <param name="id"></param>
+            
+        </member>
+        <member name="M:API.Controllers.EnderecoController.EditarEndereco(TrabalhoFinal._03_Entidades.DTOS.Endereco)">
+            <summary>
+            Edita o endereço selecionado pelo usuário 
+            </summary>
+            <param name="P"></param>
+            
+        </member>
+        <member name="M:API.Controllers.PessoaController.AdicionarPessoa(TrabalhoFinal._03_Entidades.Pessoa)">
+            <summary>
+            Adiciona pessoa no banco de dados
+            </summary>
+            <param name="P"></param>
+        </member>
+        <member name="M:API.Controllers.PessoaController.ListarPessoa">
+            <summary>
+            Lista todas as pessoas cadastradas na Farmácia do Banco de dados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.PessoaController.RemoverPessoa(System.Int32)">
+             <summary>
+            Deleta uma pessoa do banco de dados por id
+             </summary>
+             <param name="id"></param>
+             
+        </member>
+        <member name="M:API.Controllers.PessoaController.EditarPessoa(TrabalhoFinal._03_Entidades.Pessoa)">
+            <summary>
+            Edita pessoa do banco de dados por id
+            </summary>
+            <param name="P"></param>
+        </member>
+        <member name="M:API.Controllers.ProdutoController.AdicionarProduto(TrabalhoFinal._03_Entidades.Produtos)">
+            <summary>
+            Adiciona um produto no banco de dados 
+            </summary>
+            <param name="P"></param>
+            
+        </member>
+        <member name="M:API.Controllers.ProdutoController.listarproduto">
+            <summary>
+            Lista os produtos que o usuário adicionou no banco
+            </summary>
+            <param name="P"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:API.Controllers.ProdutoController.RemoverProduto(System.Int32)">
+            <summary>
+            deleta os produtos adicionados pelo usuário
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:API.Controllers.ProdutoController.EditarProduto(TrabalhoFinal._03_Entidades.Produtos)">
+            <summary>
+            Edita os produtos já adiconados no banco
+            </summary>
+            <param name="P"></param>
+        </member>
+    </members>
+</doc>

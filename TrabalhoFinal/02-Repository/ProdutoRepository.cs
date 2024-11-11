@@ -11,22 +11,19 @@ namespace CRUD_DAPPER
     public class ProdutoRepository : IProdutoRepository
     {
         private readonly string ConnectionString;
-    
-        private readonly IProdutoRepository _repositoryProduto;
 
-      
-        public ProdutoRepository(IConfiguration config, IProdutoRepository repos)
+        public ProdutoRepository(IConfiguration config)
         {
             ConnectionString = config.GetConnectionString("DefaultConnection");
-            _repositoryProduto= repos;
+        
         }
 
 
-        public void AdicionarContrib(Produtos P) 
-         {
-         using var connection = new SQLiteConnection(ConnectionString);
-         connection.Insert<Produtos>(P);
-         }
+        public void AdicionarContrib(Produtos P)
+        {
+            using var connection = new SQLiteConnection(ConnectionString);
+            connection.Insert<Produtos>(P);
+        }
 
         public List<Produtos> ListarProduto()
         {
@@ -41,7 +38,7 @@ namespace CRUD_DAPPER
             return connection.Get<Produtos>(id);
         }
 
-        public void EditarProduto( Produtos P)
+        public void EditarProduto(Produtos P)
         {
             using var connection = new SQLiteConnection(ConnectionString);
             connection.Update<Produtos>(P);

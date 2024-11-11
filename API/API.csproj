@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\Public\TrabalhoFinal\MinhaAPI.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

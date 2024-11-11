@@ -17,20 +17,31 @@ namespace API.Controllers
         /// </summary>
         /// <param name="end"></param>
         /// 
-        public EnderecoController(  IEnderecoService service)
+        public EnderecoController(IEnderecoService service)
         {
-            _service= service;
+            _service = service;
         }
 
-      
+
         /// <summary>
         /// Adiciona endereco do usuário 
         /// </summary>
         /// <param name="end"></param>
         [HttpPost("adicionar-Endereco")]
-        public void AdicionarEndereco(Endereco end)
+        public IActionResult AdicionarEndereco(Endereco end)
         {
-            _service.AdicionarEndereco(end);
+            try
+            {
+                _service.AdicionarEndereco(end);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+
+            }
+            
         }
 
         /// <summary>
@@ -41,7 +52,15 @@ namespace API.Controllers
         [HttpGet("listar-Endereco")]
         public List<Endereco> ListarEndereco()
         {
-           return _service.ListarEndereco();
+            try
+            {
+                return _service.ListarEndereco();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao listar carrinho");
+            }
+
         }
 
 
@@ -51,9 +70,19 @@ namespace API.Controllers
         /// <param name="id"></param>
         /// 
         [HttpDelete("Remover-Endereco")]
-        public void RemoverEndereco(int id)
+        public IActionResult RemoverEndereco(int id)
         {
-            _service.RemoverEndereco(id); 
+            try
+            {
+                _service.RemoverEndereco(id);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+
+            }
         }
 
         /// <summary>
@@ -63,9 +92,19 @@ namespace API.Controllers
         /// 
 
         [HttpPut("Editar-Endereco")]
-        public void EditarEndereco(Endereco P)
+        public IActionResult EditarEndereco(Endereco P)
         {
-            _service.EditarEndereco(P);
+            try
+            {
+                _service.EditarEndereco(P);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+
+            }
         }
     }
 }

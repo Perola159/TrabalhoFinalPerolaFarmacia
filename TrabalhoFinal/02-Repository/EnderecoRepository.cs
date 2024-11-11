@@ -13,14 +13,10 @@ namespace CRUD_DAPPER
     public class EnderecoRepository : IEnderecoRepository
     {
         public readonly string _ConnectionString;
-        IEnderecoRepository _repositoryendereco;
 
-
-        public EnderecoRepository(IConfiguration config, IEnderecoRepository repos)
+        public EnderecoRepository(IConfiguration config)
         {
             _ConnectionString = config.GetConnectionString("DefaultConnection");
-            _repositoryendereco = repos;
-
         }
 
         public void AdicionarContrib(Endereco P)
@@ -43,7 +39,7 @@ namespace CRUD_DAPPER
         }
 
         public void EditarEndereco(Endereco P)
-                     {
+        {
             using var connection = new SQLiteConnection(_ConnectionString);
             connection.Update<Endereco>(P);
         }

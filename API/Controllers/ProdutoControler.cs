@@ -11,8 +11,8 @@ namespace API.Controllers
     public class ProdutoController : ControllerBase
     {
         public readonly IProdutoService _service;
-        
-  
+
+
         public ProdutoController(IProdutoService serv)
         {
             _service = serv;
@@ -34,13 +34,12 @@ namespace API.Controllers
         /// </summary>
         /// <param name="P"></param>
         /// <returns></returns>
-        [HttpGet("listar-Produto")]
-        public List<ProdutoListagemDTO> ListarProduto(ProdutoListagemDTO P)
-        {
-            Produtos prod = _mapper.Map<Produtos>(P);
-            List<ProdutoListagemDTO> list = _service.listarProduto();
+        /// 
 
-            return list;
+        [HttpGet("listar-Produto")]
+        public List<Produtos> listarproduto()
+        {
+            return _service.listarProduto();
         }
 
         /// <summary>
@@ -51,7 +50,7 @@ namespace API.Controllers
         [HttpDelete("Remover-produto")]
         public void RemoverProduto(int id)
         {
-            _service.RemoverProduto(id); 
+            _service.RemoverProduto(id);
         }
 
         /// <summary>
