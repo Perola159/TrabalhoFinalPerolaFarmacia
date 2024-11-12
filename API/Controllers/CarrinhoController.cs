@@ -56,9 +56,8 @@ public class CarrinhoController : ControllerBase
         }
         catch (Exception)
         {
-            throw new Exception("Ocorreu um erro ao listar carrinho" );
+            throw new Exception("Ocorreu um erro ao listar carrinho");
         }
-        
     }
 
     /// <summary>

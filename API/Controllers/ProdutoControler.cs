@@ -16,6 +16,8 @@ namespace API.Controllers
         public ProdutoController(IProdutoService serv)
         {
             _service = serv;
+
+
         }
         /// <summary>
         /// Adiciona um produto no banco de dados 
@@ -23,9 +25,19 @@ namespace API.Controllers
         /// <param name="P"></param>
         /// 
         [HttpPost("adicionar-produto")]
-        public void AdicionarProduto(Produtos P)
+        public IActionResult AdicionarProduto(Produtos P)
         {
-            _service.AdicionarProduto(P);
+            try
+            {
+                _service.AdicionarProduto(P);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+            }
+            
         }
 
 
@@ -39,7 +51,15 @@ namespace API.Controllers
         [HttpGet("listar-Produto")]
         public List<Produtos> listarproduto()
         {
-            return _service.listarProduto();
+
+            try
+            {
+                return _service.listarProduto();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao listar carrinho");
+            }
         }
 
         /// <summary>
@@ -48,9 +68,19 @@ namespace API.Controllers
         /// <param name="id"></param>
 
         [HttpDelete("Remover-produto")]
-        public void RemoverProduto(int id)
+        public IActionResult RemoverProduto(int id)
         {
-            _service.RemoverProduto(id);
+            try
+            {
+                _service.RemoverProduto(id);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+            }
+            
         }
 
         /// <summary>
@@ -58,9 +88,19 @@ namespace API.Controllers
         /// </summary>
         /// <param name="P"></param>
         [HttpPut("Editar-produto")]
-        public void EditarProduto(Produtos P)
+        public IActionResult EditarProduto(Produtos P)
         {
-            _service.EditarProduto(P);
+            try
+            {
+                _service.EditarProduto(P);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+            }
+           
         }
     }
 }

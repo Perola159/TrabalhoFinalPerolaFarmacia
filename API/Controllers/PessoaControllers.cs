@@ -22,10 +22,19 @@ namespace API.Controllers
         /// <param name="P"></param>
 
             [HttpPost("adicionar-pessoa")]
-        public void AdicionarPessoa(Pessoa P)
+        public IActionResult AdicionarPessoa(Pessoa P)
         {
-            _service.AdicionarPessoa(P);
-           
+
+            try
+            {
+                _service.AdicionarPessoa(P);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+            }
         }
 
         /// <summary>
@@ -36,7 +45,15 @@ namespace API.Controllers
         [HttpGet("listar-Pessoa")]
         public List<Pessoa> ListarPessoa()
         {
-           return _service.ListarPessoa();
+            try
+            {
+                return _service.ListarPessoa();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao listar carrinho");
+            }
+            
         }
 
 
@@ -46,9 +63,19 @@ namespace API.Controllers
         /// <param name="id"></param>
         /// 
         [HttpDelete("Remover-pessoa")]
-        public void RemoverPessoa(int id)
+        public IActionResult RemoverPessoa(int id)
         {
-            _service.RemoverPessoa(id); 
+            try
+            {
+                _service.RemoverPessoa(id);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+            }
+         
         }
 
         /// <summary>
@@ -56,9 +83,18 @@ namespace API.Controllers
         /// </summary>
         /// <param name="P"></param>
         [HttpPut("Editar-Pessoa")]
-        public void EditarPessoa(Pessoa P)
+        public IActionResult EditarPessoa(Pessoa P)
         {
-            _service.EditarPessoa(P);
+            try
+            {
+                _service.EditarPessoa(P);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro +" +
+                    "o erro foi: " + erro.Message);
+            }
         }
     }
 }
