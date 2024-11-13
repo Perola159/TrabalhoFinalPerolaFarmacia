@@ -12,7 +12,6 @@ namespace TrabalhoFinal._03_Entidades
     {
         public string Nome { get; set; }
         public int Preco { get; set; }
-
         public int Id { get; set; }
         public int QuantidadeEstoque { get; set; }
     }

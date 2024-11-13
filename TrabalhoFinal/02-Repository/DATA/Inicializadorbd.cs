@@ -42,10 +42,11 @@ namespace TrabalhoFinal._02_Repository.DATA
 
             criarTabela += @"   
                  CREATE TABLE IF NOT EXISTS Carrinhos(
-                 IdProduto INT INTEGER PRIMARY KEY AUTOINCREMENT,
+                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 IdProduto INTEGER NOT NULL,
                  IdPessoa INTEGER NOT NULL                  
                 );";
-
+            connection.Execute(criarTabela);
         }
     }
 }

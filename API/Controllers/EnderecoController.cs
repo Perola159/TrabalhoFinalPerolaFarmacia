@@ -56,9 +56,9 @@ namespace API.Controllers
             {
                 return _service.ListarEndereco();
             }
-            catch (Exception)
+            catch (Exception erro)
             {
-                throw new Exception("Ocorreu um erro ao listar carrinho");
+                throw new Exception($"Ocorreu um erro ao listar carrinho {erro.Message}");
             }
 
         }

@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace TrabalhoFinal._03_Entidades
 {
-    [Table("Carrinho")]
+    [Table("Carrinhos")]
     public class Carrinho
     {
         public int Id { get; set; }
-        public string Nome { get; set; }
         public int IdProduto{ get; set; }
 
         public int IdPessoa { get; set; }

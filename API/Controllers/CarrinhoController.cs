@@ -54,9 +54,9 @@ public class CarrinhoController : ControllerBase
         {
             return _service.ListarProdutoCarrinho();
         }
-        catch (Exception)
+        catch (Exception erro)
         {
-            throw new Exception("Ocorreu um erro ao listar carrinho");
+            throw new Exception($"Ocorreu um erro ao listar carrinho {erro.Message}");
         }
     }
 
@@ -77,7 +77,6 @@ public class CarrinhoController : ControllerBase
         {
             return BadRequest("Ocorreu um erro +" +
                 "o erro foi: " + erro.Message);
-
         }
         
     }
