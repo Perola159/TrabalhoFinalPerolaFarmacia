@@ -26,7 +26,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "PerolinhaFarmacêutica",
         Version = "v1",
-        Description = "Sua saúde é a nossa pérola mais preciosa."
+        Description = "Sua saúde é a nossa pérola mais preciosa!."
     });
 });
 

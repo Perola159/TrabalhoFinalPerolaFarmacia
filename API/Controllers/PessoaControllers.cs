@@ -13,7 +13,7 @@ namespace API.Controllers
 
         public PessoaController(IPessoaService service)
         {
-            _service = service; //injecao de independecia aplicada 
+            _service = service; //injecao de dependecia aplicada 
         }
 
         /// <summary>

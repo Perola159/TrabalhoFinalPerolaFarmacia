@@ -46,7 +46,27 @@ namespace TrabalhoFinal._02_Repository.DATA
                  IdProduto INTEGER NOT NULL,
                  IdPessoa INTEGER NOT NULL                  
                 );";
+
+            criarTabela += @"   
+                 CREATE TABLE IF NOT EXISTS Vendas(
+                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 IdCarrinho INTEGER NOT NULL,          
+                );";
+
+
+            criarTabela += @"   
+                 CREATE TABLE IF NOT EXISTS MetodoPagamentos(
+                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 Nome TEXT NOT NULL,
+                 Tipo TEXT NOT NULL,
+                 Ativo BOOLEAN NOT NULL,
+                 TaxaTransacao DECIMAL(5, 2)
+                 );";
+
+
+
             connection.Execute(criarTabela);
         }
     }
 }
+
