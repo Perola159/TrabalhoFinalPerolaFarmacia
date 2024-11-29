@@ -63,6 +63,29 @@
             <param name="P"></param>
             
         </member>
+        <member name="M:API.Controllers.MetodoPagamentoController.AdicionarMetodoPagamento(TrabalhoFinal._03_Entidades.MetodoPagamento)">
+            <summary>
+            Adiciona um novo método de pagamento
+            </summary>
+            <param name="metodoPagamento"></param>
+        </member>
+        <member name="M:API.Controllers.MetodoPagamentoController.ListarMetodosPagamento">
+            <summary>
+            Lista todos os métodos de pagamento disponíveis
+            </summary>
+        </member>
+        <member name="M:API.Controllers.MetodoPagamentoController.EditarMetodoPagamento(TrabalhoFinal._03_Entidades.MetodoPagamento)">
+            <summary>
+            Edita um método de pagamento existente
+            </summary>
+            <param name="metodoPagamento"></param>
+        </member>
+        <member name="M:API.Controllers.MetodoPagamentoController.DeletarMetodoPagamento(System.Int32)">
+            <summary>
+            Deleta um método de pagamento
+            </summary>
+            <param name="id"></param>
+        </member>
         <member name="M:API.Controllers.PessoaController.AdicionarPessoa(TrabalhoFinal._03_Entidades.Pessoa)">
             <summary>
             Adiciona pessoa no banco de dados

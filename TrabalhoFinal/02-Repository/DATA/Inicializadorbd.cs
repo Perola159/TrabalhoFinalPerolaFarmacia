@@ -50,7 +50,7 @@ namespace TrabalhoFinal._02_Repository.DATA
             criarTabela += @"   
                  CREATE TABLE IF NOT EXISTS Vendas(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 IdCarrinho INTEGER NOT NULL,          
+                 IdCarrinho INTEGER NOT NULL   
                 );";
 
 
