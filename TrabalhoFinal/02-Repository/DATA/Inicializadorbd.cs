@@ -14,15 +14,16 @@ namespace TrabalhoFinal._02_Repository.DATA
 
         public static void Inicializar()
         {
-            using var connection = new SQLiteConnection("Data Source=PerolinhaFarmacêutica.db"); //criar conexão
+            using var connection = new SQLiteConnection("Data Source=PerolinhaFarmacêutica.db"); // criar conexão
 
             string criarTabela = @"   
-                 CREATE TABLE IF NOT EXISTS Pessoas(
-                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 Nome TEXT NOT NULL,
-                 EnderecoId INTEGER NOT NULL  ,
-                 CPF REAL NOT NULL
-                );";
+        CREATE TABLE IF NOT EXISTS Pessoas(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Nome TEXT NOT NULL,
+        CPF TEXT NOT NULL ,
+        Telefone INT NOT NULL
+        );";
+
 
             criarTabela += @"   
                  CREATE TABLE IF NOT EXISTS Produtos(

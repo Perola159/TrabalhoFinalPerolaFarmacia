@@ -8,15 +8,10 @@ namespace TrabalhoFinal._03_Entidades
 {
     public class Pessoa
     {
-        public string Nome { get; set; }
-
-        public double CPF;
-
-        public double buscarcpf()
-        {
-            return CPF;
-        }
         public int ID { get; set; }
-        public int EnderecoId { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+        public int Telefone { get; set; }
+ 
     }
 }

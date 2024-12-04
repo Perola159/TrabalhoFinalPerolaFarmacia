@@ -12,6 +12,7 @@ namespace TrabalhoFinal._03_Entidades.DTOS
         public string Rua { get; set; }
         public string Bairro { get; set; }
         public int Numero { get; set; }
-        
+        public int PessoaID { get; set; }
+
     }
 }

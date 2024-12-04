@@ -20,22 +20,35 @@ namespace API.Controllers
         /// Adiciona pessoa no banco de dados
         /// </summary>
         /// <param name="P"></param>
-
-            [HttpPost("adicionar-pessoa")]
+        [HttpPost("adicionar-pessoa")]
         public IActionResult AdicionarPessoa(Pessoa P)
         {
+            // Verifica se o EnderecoId é válido
+            if (P.EnderecoId <= 0)
+            {
+                return BadRequest("Endereço inválido."); // Se for inválido, retorna o erro
+            }
+
+            // Verifica se o CPF é válido
+            if (!ValidacaoCPF.ValidarCPF(P.CPF))
+            {
+                return BadRequest("O CPF informado é inválido.");
+            }
 
             try
             {
+                // Chama o serviço para adicionar a pessoa, passando a pessoa com CPF validado
                 _service.AdicionarPessoa(P);
-                return Ok();
+                return Ok(); // Retorna OK se deu certo
             }
             catch (Exception erro)
             {
-                return BadRequest("Ocorreu um erro +" +
-                    "o erro foi: " + erro.Message);
+                // Caso ocorra algum erro, retorna uma resposta de erro com a mensagem
+                return BadRequest("Ocorreu um erro: " + erro.Message);
             }
         }
+
+
 
         /// <summary>
         /// Lista todas as pessoas cadastradas na Farmácia do Banco de dados

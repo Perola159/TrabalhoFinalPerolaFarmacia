@@ -21,14 +21,36 @@ namespace TrabalhoFinal._01_Services
 
         public void AdicionarPessoa(Pessoa P)
         {
-            Endereco endercoBanco = _repositoryEndereco.BuscarEndereco(P.EnderecoId);
-            if (endercoBanco != null)
+            
+            Endereco enderecoBanco = _repositoryEndereco.BuscarEndereco(P.EnderecoId);
+
+    
+            if (enderecoBanco == null)
             {
-                _repository.AdicionarPessoa(P);
+                throw new Exception("Endereço não encontrado.");
             }
 
+            // Validação simples de CPF
+            if (!ValidarCPF(P.CPF))
+            {
+                throw new Exception("O CPF informado é inválido.");
+            }
+
+            // Se o endereço e o CPF forem válidos, adiciona a pessoa no banco
+            _repository.AdicionarPessoa(P);
         }
-  
+
+        private bool ValidarCPF(string cpf)
+        {
+            // Remove qualquer caractere não numérico do CPF
+            cpf = new string(cpf.Where(char.IsDigit).ToArray());
+
+            // Verifica se o CPF tem 11 caracteres e se não é composto apenas por números iguais
+            if (cpf.Length != 11 || cpf.All(c => c == cpf[0]))
+                return false;
+
+            return true;
+        }
 
 
         public void RemoverPessoa(int id)
