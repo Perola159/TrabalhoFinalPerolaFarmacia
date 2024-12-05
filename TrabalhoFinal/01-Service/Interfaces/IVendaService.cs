@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace TrabalhoFinal._01_Service.Interfaces
 {
@@ -10,5 +11,6 @@ namespace TrabalhoFinal._01_Service.Interfaces
         List<Venda> ListarVendas();  
         Venda BuscarVendaPorId(int id);
         void EditarVenda(Venda venda);
+        List<VendaDTO> ListarVendasComCarrinho();
     }
 }

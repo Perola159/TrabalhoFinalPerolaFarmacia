@@ -27,10 +27,10 @@ namespace TrabalhoFinal._01_Services
             repository.DeleteEndereco(id);
         }
 
-        public List<Endereco> ListarEndereco()
-        {
-            return repository.ListarEndereco();
-        }
+        //public List<Endereco> ListarEndereco()
+        //{
+        //    return repository.ListarEndereco();
+        //}
         public List<Endereco> ListarEnderecoPorId(int id)
         {
             return repository.ListarEnderecoPorId(id);

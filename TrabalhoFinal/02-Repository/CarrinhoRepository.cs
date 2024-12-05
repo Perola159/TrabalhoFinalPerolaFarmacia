@@ -29,39 +29,70 @@ namespace CRUD_DAPPER
 
         public List<CarrinhoDTO> Listar()
         {
-           
             using var connection = new SQLiteConnection(ConnectionString);
 
-          
             List<Carrinho> carrinhos = connection.GetAll<Carrinho>().ToList();
 
-          
             List<CarrinhoDTO> carrinhosDTO = new List<CarrinhoDTO>();
 
-           
             foreach (Carrinho c in carrinhos)
             {
-              
-                CarrinhoDTO carrinhoDTO = new CarrinhoDTO
-                {
-                    Id = c.Id,              
-                    IdPessoa = c.IdPessoa,  
-                    Produto = _repositoryProduto.BuscarProdutosPorId(c.IdProduto)  
-                };
+                var produto = _repositoryProduto.BuscarProdutosPorId(c.IdProduto);
 
-            
-                carrinhosDTO.Add(carrinhoDTO);
+                // Verifique se o produto foi encontrado antes de adicionar ao DTO
+                if (produto != null)
+                {
+                    CarrinhoDTO carrinhoDTO = new CarrinhoDTO
+                    {
+                        Id = c.Id,
+                        IdPessoa = c.IdPessoa,
+                        NomePessoa = _repositoryPessoa.BuscarPessoaPorId(c.IdPessoa)?.Nome,  // Pra caso a pessoa não ser encontrada
+                        IdProduto = c.IdProduto,
+                        NomeProduto = produto.Nome,
+                        PrecoProduto = produto.Preco
+                    };
+
+                    carrinhosDTO.Add(carrinhoDTO);
+                }
             }
 
-            
             return carrinhosDTO;
         }
+
+
 
         public void EditarProdutoCarrinho(Carrinho c)
         {
             using var connection = new SQLiteConnection(ConnectionString);
             connection.Update<Carrinho>(c);
         }
+
+        public void DeletarProdutoCarrinho(int id)
+        {
+            using var connection = new SQLiteConnection(ConnectionString);
+            var carrinho = connection.Get<Carrinho>(id); 
+            if (carrinho != null)
+            {
+                connection.Delete(carrinho); 
+            }
+        }
+
+        public Carrinho BuscarCarrinhoPorProduto(int idPessoa, int idProduto)
+        {
+            using var connection = new SQLiteConnection(ConnectionString);
+            return connection.GetAll<Carrinho>().FirstOrDefault(c => c.IdPessoa == idPessoa && c.IdProduto == idProduto);
+        }
+
+
+        public Carrinho BuscarCarrinhoPorId(int id)
+        {
+        
+            using var connection = new SQLiteConnection(ConnectionString);
+            return connection.Get<Carrinho>(id);  
+        }
+
+
+
     }
 }
 

@@ -45,38 +45,31 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Lista os endereços dos usuários cadastrados 
+        /// Lista os endereços de um usuário específico pelo ID.
         /// </summary>
-        /// <returns></returns>
-
-        [HttpGet("listar-Endereco")]
-        public List<Endereco> ListarEndereco()
+        /// <param name="id">ID do usuário cujos endereços serão listados.</param>
+        /// <returns>Lista de endereços do usuário.</returns>
+        [HttpGet("listar-endereco-por-id")]
+        public IActionResult ListarEnderecoPorId(int id)
         {
             try
             {
-                return _service.ListarEndereco();
+                var enderecos = _service.ListarEnderecoPorId(id);
+
+                if (enderecos == null || !enderecos.Any())
+                {
+                    return NotFound($"Nenhum endereço encontrado para o usuário com ID {id}.");
+                }
+
+                return Ok(enderecos);
             }
             catch (Exception erro)
             {
-                throw new Exception($"Ocorreu um erro ao listar os endereços {erro.Message}");
+                return StatusCode(500, $"Ocorreu um erro ao listar os endereços: {erro.Message}");
             }
-
         }
 
-
-        public List<Endereco> ListarEnderecoPorId(int id)
-        {
-            try
-            {
-                return _service.ListarEnderecoPorId(id);
-            }
-            catch (Exception erro)
-            {
-                throw new Exception($"Ocorreu um erro ao listar o endereço do id solicitado  {erro.Message}");
-            }
-
-        }
-
+        
 
         /// <summary>
         /// Deleta o endereço selecionado por ID

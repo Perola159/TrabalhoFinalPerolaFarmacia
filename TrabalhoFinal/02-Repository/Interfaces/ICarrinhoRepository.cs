@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,10 @@ namespace TrabalhoFinal._02_Repository.Interfaces
         void AdicionarContrib(Carrinho C);
         List<CarrinhoDTO> Listar();
         void EditarProdutoCarrinho(Carrinho c);
+       void DeletarProdutoCarrinho(int id);
+       Carrinho BuscarCarrinhoPorId(int id);
+       
+
 
 
     }

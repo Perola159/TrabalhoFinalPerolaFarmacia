@@ -8,7 +8,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class VendaController : ControllerBase  
+    public class VendaController : ControllerBase
     {
         private readonly IVendaService _service;
 
@@ -22,7 +22,7 @@ namespace API.Controllers
         /// </summary>
         /// <param name="venda"></param>
         [HttpPost("adicionar-venda")]
-        public IActionResult AdicionarVenda([FromBody] Venda venda)  
+        public IActionResult AdicionarVenda([FromBody] Venda venda)
         {
             try
             {
@@ -111,5 +111,21 @@ namespace API.Controllers
                 return BadRequest("Ocorreu um erro: " + erro.Message);
             }
         }
+
+
+        [HttpGet("listar-vendas-com-carrinho")]
+        public IActionResult ListarVendasComCarrinho()
+        {
+            try
+            {
+                var vendasComCarrinho = _service.ListarVendasComCarrinho();
+                return Ok(vendasComCarrinho);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest("Ocorreu um erro ao listar as vendas com carrinho: " + erro.Message);
+            }
+        }
+
     }
 }

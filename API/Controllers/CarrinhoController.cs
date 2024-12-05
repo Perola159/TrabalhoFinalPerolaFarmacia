@@ -86,22 +86,22 @@ public class CarrinhoController : ControllerBase
     /// Delete o produto selecionado por ID
     /// </summary>
     /// <param name="c"></param>
+ 
     [HttpDelete("deletar-Produto-do-Carrinho")]
-    public IActionResult DeletarProdutoCarrinho(Carrinho c)
+    public IActionResult DeletarProdutoCarrinho(int id)
     {
         try
         {
-            _service.EditarProdutoCarrinho(c);
+            _service.DeletarProdutoCarrinho(id);  // Chama o método de deleção
             return Ok();
         }
         catch (Exception erro)
         {
-            return BadRequest("Ocorreu um erro +" +
-                "o erro foi: " + erro.Message);
-
+            return BadRequest("Ocorreu um erro: " + erro.Message);
         }
-      
     }
+
+
 }
 
 

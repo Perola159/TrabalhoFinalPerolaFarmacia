@@ -7,6 +7,7 @@ using TrabalhoFinal._01_Services;
 using TrabalhoFinal._02_Repository;
 using TrabalhoFinal._02_Repository.DATA;
 using TrabalhoFinal._02_Repository.Interfaces;
+using TrabalhoFinal._02_Repository.Interfaces.TrabalhoFinal._02_Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +52,9 @@ builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
 builder.Services.AddScoped<IMetodoPagamentoService, MetodoPagamentoService>();
 builder.Services.AddScoped<IMetodoPagamentoRepository, MetodoPagamentoRepository>();
+
+builder.Services.AddScoped<IVendaService, VendaService>();
+builder.Services.AddScoped<IVendaRepository, VendaRepository>();
 
 
 var app = builder.Build();

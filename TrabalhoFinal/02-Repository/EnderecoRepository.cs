@@ -25,16 +25,16 @@ namespace CRUD_DAPPER
             connection.Insert<Endereco>(P);
         }
 
-        public List<Endereco> ListarEndereco()
-        {
-            using var connection = new SQLiteConnection(_ConnectionString);
-            return connection.GetAll<Endereco>().ToList(); //TROUXE DO BANCO E RETORNOU A LISTA 
-        }
+        //public List<Endereco> ListarEndereco()
+        //{
+        //    using var connection = new SQLiteConnection(_ConnectionString);
+        //    return connection.GetAll<Endereco>().ToList(); //TROUXE DO BANCO E RETORNOU A LISTA 
+        //}
 
         public List<Endereco> ListarEnderecoPorId(int usuarioId)
         {
             using var connection = new SQLiteConnection(_ConnectionString);
-            List<Endereco>list=connection.Query<Endereco>($"SELECT Id, Rua, Bairro, Numero, PessoaID FROM Endrecos WHERE PessoaID = {usuarioId}" ).ToList();
+            List<Endereco>list=connection.Query<Endereco>($"SELECT Id, Rua, Bairro, Numero, PessoaID FROM Enderecos WHERE PessoaID = {usuarioId}" ).ToList();
 
             return list;
         }

@@ -24,7 +24,7 @@
             <param name="c"></param>
             
         </member>
-        <member name="M:API.Controllers.CarrinhoController.DeletarProdutoCarrinho(TrabalhoFinal._03_Entidades.Carrinho)">
+        <member name="M:API.Controllers.CarrinhoController.DeletarProdutoCarrinho(System.Int32)">
             <summary>
             Delete o produto selecionado por ID
             </summary>
@@ -43,11 +43,12 @@
             </summary>
             <param name="end"></param>
         </member>
-        <member name="M:API.Controllers.EnderecoController.ListarEndereco">
+        <member name="M:API.Controllers.EnderecoController.ListarEnderecoPorId(System.Int32)">
             <summary>
-            Lista os endereços dos usuários cadastrados 
+            Lista os endereços de um usuário específico pelo ID.
             </summary>
-            <returns></returns>
+            <param name="id">ID do usuário cujos endereços serão listados.</param>
+            <returns>Lista de endereços do usuário.</returns>
         </member>
         <member name="M:API.Controllers.EnderecoController.RemoverEndereco(System.Int32)">
             <summary>

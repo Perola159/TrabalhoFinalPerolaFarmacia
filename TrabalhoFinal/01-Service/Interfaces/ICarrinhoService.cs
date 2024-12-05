@@ -11,7 +11,9 @@ namespace TrabalhoFinal._01_Service.Interfaces
     public interface ICarrinhoService
     {
         void AdicionarProdutoCarrinho(Carrinho C);
-        List<CarrinhoDTO> ListarProdutoCarrinho();
+        List<CarrinhoDTO> ListarProdutoCarrinho();  
         void EditarProdutoCarrinho(Carrinho c);
+       void DeletarProdutoCarrinho(int id); 
     }
+
 }

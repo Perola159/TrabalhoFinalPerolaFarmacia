@@ -10,9 +10,9 @@ namespace TrabalhoFinal._03_Entidades.DTOS
     {
         public int Id { get; set; }
         public int IdPessoa { get; set; }
-        public Pessoa Pessoa { get; set; }
-
+        public string NomePessoa { get; set; }  
         public int IdProduto { get; set; }
-        public Produtos Produto { get; set; }
+        public string NomeProduto { get; set; }  
+        public decimal PrecoProduto { get; set; }  
     }
 }

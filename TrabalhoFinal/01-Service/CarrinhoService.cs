@@ -37,5 +37,12 @@ namespace TrabalhoFinal._01_Services
         {
             _repository.EditarProdutoCarrinho(c);
         }
+
+        public void DeletarProdutoCarrinho(int id)
+        {
+            _repository.DeletarProdutoCarrinho(id);  
+        }
+
+
     }
 }
