@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 
 namespace TrabalhoFinal._01_Service
 {
-    public class MetodoPagamentoService
+    public class MetodoPagamentoService : IMetodoPagamentoService  // Implementar a interface
     {
         private readonly IMetodoPagamentoRepository _repository;
 
@@ -13,27 +13,27 @@ namespace TrabalhoFinal._01_Service
             _repository = repository;
         }
 
-        public void AdicionarMetodo(MetodoPagamento metodoPagamento)
+        public void AdicionarMetodoPagamento(MetodoPagamento metodoPagamento)
         {
             _repository.AdicionarMetodoPagamento(metodoPagamento);
         }
 
-        public List<MetodoPagamento> ListarMetodos()
+        public List<MetodoPagamento> ListarMetodosPagamento()
         {
             return _repository.ListarMetodosPagamento();
         }
 
-        public MetodoPagamento BuscarMetodoPorId(int id)
+        public MetodoPagamento BuscarMetodoPagamentoPorId(int id)
         {
             return _repository.BuscarMetodoPagamentoPorId(id);
         }
 
-        public void EditarMetodo(MetodoPagamento metodoPagamento)
+        public void EditarMetodoPagamento(MetodoPagamento metodoPagamento)
         {
             _repository.EditarMetodoPagamento(metodoPagamento);
         }
 
-        public void RemoverMetodo(int id)
+        public void RemoverMetodoPagamento(int id)
         {
             _repository.RemoverMetodoPagamento(id);
         }

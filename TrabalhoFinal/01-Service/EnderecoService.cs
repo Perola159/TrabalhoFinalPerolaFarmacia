@@ -31,7 +31,10 @@ namespace TrabalhoFinal._01_Services
         {
             return repository.ListarEndereco();
         }
-
+        public List<Endereco> ListarEnderecoPorId(int id)
+        {
+            return repository.ListarEnderecoPorId(id);
+        }
         public Endereco BuscarPorId(int id)
         {
             return repository.BuscarEndereco(id);

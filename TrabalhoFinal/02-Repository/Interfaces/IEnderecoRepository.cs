@@ -12,6 +12,8 @@ namespace TrabalhoFinal._02_Repository.Interfaces
     {
         void AdicionarContrib(Endereco P);
         List<Endereco> ListarEndereco();
+        public List<Endereco> ListarEnderecoPorId(int id);
+      
         Endereco BuscarEndereco(int id);
         void EditarEndereco(Endereco P);
         void DeleteEndereco(int id);

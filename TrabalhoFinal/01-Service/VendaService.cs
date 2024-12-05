@@ -24,13 +24,12 @@ namespace TrabalhoFinal._01_Service
             _repository.AdicionarVenda(venda);
         }
 
-
         public void RemoverVenda(int id)
         {
             _repository.RemoverVenda(id);
         }
 
-        public List<Venda> listarVenda()
+        public List<Venda> ListarVendas() 
         {
             return _repository.ListarVenda();
         }
@@ -42,8 +41,9 @@ namespace TrabalhoFinal._01_Service
 
         public void EditarVenda(Venda venda)
         {
-            _repository.AdicionarVenda(venda);
+            _repository.EditarVenda(venda); 
         }
-
     }
+   
+
 }

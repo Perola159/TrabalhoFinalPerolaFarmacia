@@ -1,8 +1,10 @@
 using API;
 using CRUD_DAPPER;
 using Microsoft.OpenApi.Models;
+using TrabalhoFinal._01_Service;
 using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._01_Services;
+using TrabalhoFinal._02_Repository;
 using TrabalhoFinal._02_Repository.DATA;
 using TrabalhoFinal._02_Repository.Interfaces;
 
@@ -31,7 +33,6 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 
-
 builder.Services.AddAutoMapper(typeof(MapProfile));
 InicializadorBd.Inicializar();
 
@@ -47,6 +48,10 @@ builder.Services.AddScoped<IPessoaRepositorycs, PessoaRepository>();
 
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+builder.Services.AddScoped<IMetodoPagamentoService, MetodoPagamentoService>();
+builder.Services.AddScoped<IMetodoPagamentoRepository, MetodoPagamentoRepository>();
+
 
 var app = builder.Build();
 

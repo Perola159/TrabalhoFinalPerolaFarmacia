@@ -12,6 +12,7 @@ namespace TrabalhoFinal._01_Service.Interfaces
         void AdicionarEndereco(Endereco P);
         void RemoverEndereco(int id);
         List<Endereco> ListarEndereco();
+        public List<Endereco> ListarEnderecoPorId(int id);
         Endereco BuscarPorId(int id);
         void EditarEndereco(Endereco P);
     }

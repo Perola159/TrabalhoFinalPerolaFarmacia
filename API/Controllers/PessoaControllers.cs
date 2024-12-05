@@ -23,17 +23,8 @@ namespace API.Controllers
         [HttpPost("adicionar-pessoa")]
         public IActionResult AdicionarPessoa(Pessoa P)
         {
-            // Verifica se o EnderecoId é válido
-            if (P.EnderecoId <= 0)
-            {
-                return BadRequest("Endereço inválido."); // Se for inválido, retorna o erro
-            }
+          
 
-            // Verifica se o CPF é válido
-            if (!ValidacaoCPF.ValidarCPF(P.CPF))
-            {
-                return BadRequest("O CPF informado é inválido.");
-            }
 
             try
             {

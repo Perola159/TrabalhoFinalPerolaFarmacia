@@ -31,6 +31,13 @@ namespace CRUD_DAPPER
             return connection.GetAll<Endereco>().ToList(); //TROUXE DO BANCO E RETORNOU A LISTA 
         }
 
+        public List<Endereco> ListarEnderecoPorId(int usuarioId)
+        {
+            using var connection = new SQLiteConnection(_ConnectionString);
+            List<Endereco>list=connection.Query<Endereco>($"SELECT Id, Rua, Bairro, Numero, PessoaID FROM Endrecos WHERE PessoaID = {usuarioId}" ).ToList();
+
+            return list;
+        }
 
         public Endereco BuscarEndereco(int id)
         {

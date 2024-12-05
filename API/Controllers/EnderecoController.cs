@@ -58,7 +58,21 @@ namespace API.Controllers
             }
             catch (Exception erro)
             {
-                throw new Exception($"Ocorreu um erro ao listar carrinho {erro.Message}");
+                throw new Exception($"Ocorreu um erro ao listar os endereços {erro.Message}");
+            }
+
+        }
+
+
+        public List<Endereco> ListarEnderecoPorId(int id)
+        {
+            try
+            {
+                return _service.ListarEnderecoPorId(id);
+            }
+            catch (Exception erro)
+            {
+                throw new Exception($"Ocorreu um erro ao listar o endereço do id solicitado  {erro.Message}");
             }
 
         }

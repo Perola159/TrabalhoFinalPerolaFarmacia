@@ -44,7 +44,7 @@ namespace API.Controllers
         {
             try
             {
-                var vendas = _service.listarVenda();
+                var vendas = _service.ListarVendas();
                 return Ok(vendas);
             }
             catch (Exception erro)

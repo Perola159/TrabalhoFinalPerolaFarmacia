@@ -17,20 +17,21 @@ namespace TrabalhoFinal._02_Repository.DATA
             using var connection = new SQLiteConnection("Data Source=PerolinhaFarmacêutica.db"); // criar conexão
 
             string criarTabela = @"   
-        CREATE TABLE IF NOT EXISTS Pessoas(
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        Nome TEXT NOT NULL,
-        CPF TEXT NOT NULL ,
-        Telefone INT NOT NULL
-        );";
+                CREATE TABLE IF NOT EXISTS Pessoas(
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                Nome TEXT NOT NULL,
+                Username TEXT NOT NULL ,
+                Senha TEXT NOT NULL,
+                Email TEXT NOT NULL
+               );";
 
 
             criarTabela += @"   
                  CREATE TABLE IF NOT EXISTS Produtos(
-                 Nome TEXT NOT NULL,
-                 Preco  NOT NULL,
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 QuantidadeEstoque  NOT NULL
+                 Nome TEXT NOT NULL,
+                 Preco DECIMAL NOT NULL,
+                 QuantidadeEstoque INT NOT NULL
                 );";
 
             criarTabela += @"   
@@ -38,7 +39,8 @@ namespace TrabalhoFinal._02_Repository.DATA
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
                  Rua TEXT NOT NULL,
                  Bairro TEXT NOT NULL,
-                 Numero INTEGER NOT NULL                  
+                 Numero INTEGER NOT NULL,
+                 PessoaID INTEGER NOT NULL
                 );";
 
             criarTabela += @"   

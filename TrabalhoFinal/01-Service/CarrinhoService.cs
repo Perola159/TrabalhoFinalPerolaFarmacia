@@ -20,6 +20,11 @@ namespace TrabalhoFinal._01_Services
 
         public void AdicionarProdutoCarrinho(Carrinho C)
         {
+            // Verificando se IdPessoa e IdProduto são válidos
+            if (C.IdPessoa <= 0 || C.IdProduto <= 0)
+            {
+                throw new ArgumentException("Pessoa ou Produto inválido.");
+            }
             _repository.AdicionarContrib(C);
         }
 
