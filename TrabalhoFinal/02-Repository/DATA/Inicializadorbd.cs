@@ -26,6 +26,8 @@ namespace TrabalhoFinal._02_Repository.DATA
                );";
 
 
+
+
             criarTabela += @"   
                  CREATE TABLE IF NOT EXISTS Produtos(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,

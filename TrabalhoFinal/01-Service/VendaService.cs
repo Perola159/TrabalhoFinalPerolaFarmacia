@@ -40,7 +40,7 @@ namespace TrabalhoFinal._01_Service
 
             foreach (var venda in vendas)
             {
-                var carrinho = _carrinhoRepository.BuscarCarrinhoPorId(venda.IdCarrinho); // Buscar o carrinho associado à venda
+                Carrinho carrinho = _carrinhoRepository.BuscarCarrinhoPorId(venda.IdCarrinho); // Buscar o carrinho associado à venda
                 var itensCarrinho = carrinho.Itens.Select(i => new ItemCarrinho
                 {
                     ProdutoId = i.ProdutoId,
