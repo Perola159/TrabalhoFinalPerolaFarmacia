@@ -66,11 +66,11 @@ public class CarrinhoController : ControllerBase
     /// <param name="c"></param>
     /// 
     [HttpPut("editar-Carrinho")]
-    public IActionResult EditarProdutoCarrinho(Carrinho c)
+    public IActionResult EditarProdutoCarrinho(int id)
     {
         try
         {
-            _service.EditarProdutoCarrinho(c);
+            _service.EditarProdutoCarrinho(id);
             return Ok();
         }
         catch (Exception erro)

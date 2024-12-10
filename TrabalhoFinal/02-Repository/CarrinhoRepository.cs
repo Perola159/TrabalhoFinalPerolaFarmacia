@@ -49,6 +49,16 @@ namespace TrabalhoFinal._02_Repository
                 }).ToList()
             }).ToList();
         }
+
+        public void DeletarCarrinho(int id)
+        {
+            var carrinho = _carrinhos.FirstOrDefault(c => c.Id == id);
+            if (carrinho != null)
+            {
+                _carrinhos.Remove(carrinho);
+            }
+        }
+
     }
 }
 

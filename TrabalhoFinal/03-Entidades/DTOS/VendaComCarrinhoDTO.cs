@@ -4,9 +4,9 @@ public class VendaComCarrinhoDTO
 {
     public int Id { get; set; }
     public int IdCarrinho { get; set; }
-    public List<ItemCarrinho> ItensCarrinho { get; set; } // Supondo que "ItemCarrinho" seja uma entidade representando os itens do carrinho
+    public List<ItemCarrinho> ItensCarrinho { get; set; }
+    public int IdVenda { get; set; }
 
-    // Adicione mais propriedades conforme necessário
 }
 
 

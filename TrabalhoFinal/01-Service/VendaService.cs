@@ -1,26 +1,47 @@
-﻿// Implementação do serviço de vendas
-public class VendaService
-{
-    private readonly ICarrinhoRepository _carrinhoRepository;
+﻿using TrabalhoFinal._01_Service.Interfaces;
+using TrabalhoFinal._02_Repository.Interfaces;
+using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
-    // Construtor para receber o repositório
-    public VendaService(ICarrinhoRepository carrinhoRepository)
+public class VendaService : IVendaService
+{
+    private readonly IVendaRepository _vendaRepository;
+
+    public VendaService(IVendaRepository vendaRepository)
     {
-        _carrinhoRepository = carrinhoRepository;
+        _vendaRepository = vendaRepository;
     }
 
-    // Método para listar todas as vendas com os detalhes dos itens
-    public void ListarVendas()
+    public void AdicionarVenda(Venda venda)
     {
-        var carrinhos = _carrinhoRepository.ListarCarrinhosComDetalhes();
+        _vendaRepository.AdicionarVenda(venda);
+    }
 
-        foreach (var carrinho in carrinhos)
+    public Venda BuscarVendaPorId(int id)
+    {
+        return _vendaRepository.BuscarVendaPorId(id);
+    }
+
+    public void EditarVenda(Venda venda)
+    {
+        _vendaRepository.EditarVenda(venda);
+    }
+
+    public void RemoverVenda(int id)
+    {
+        _vendaRepository.RemoverVenda(id);
+    }
+
+    public List<VendaComCarrinhoDTO> ListarVendasComCarrinho()
+    {
+        var vendas = _vendaRepository.ListarVenda();
+        var vendasComCarrinho = vendas.Select(v => new VendaComCarrinhoDTO
         {
-            Console.WriteLine($"Carrinho ID: {carrinho.Id}");   
-            foreach (var item in carrinho.Itens)
-            {
-                Console.WriteLine($"Produto ID: {item.ProdutoId}, Quantidade: {item.Quantidade}, Preço: {item.Preco:C}");
-            }
-        }
+            IdVenda = v.Id,
+            IdCarrinho = v.IdCarrinho,
+            // Preencha os detalhes necessários
+        }).ToList();
+
+        return vendasComCarrinho;
     }
 }

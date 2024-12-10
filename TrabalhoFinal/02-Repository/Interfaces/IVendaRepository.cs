@@ -12,8 +12,7 @@ namespace TrabalhoFinal._02_Repository.Interfaces
    
     
 
-    namespace TrabalhoFinal._02_Repository.Interfaces
-    {
+   
         public interface IVendaRepository
         {
             void AdicionarVenda(Venda venda);
@@ -22,7 +21,7 @@ namespace TrabalhoFinal._02_Repository.Interfaces
             void EditarVenda(Venda venda);
             void RemoverVenda(int id);
         }
-    }
+    
 
 
 }

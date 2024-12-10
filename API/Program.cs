@@ -7,7 +7,7 @@ using TrabalhoFinal._01_Services;
 using TrabalhoFinal._02_Repository;
 using TrabalhoFinal._02_Repository.DATA;
 using TrabalhoFinal._02_Repository.Interfaces;
-using TrabalhoFinal._02_Repository.Interfaces.TrabalhoFinal._02_Repository.Interfaces;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

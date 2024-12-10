@@ -17,7 +17,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:API.Controllers.CarrinhoController.EditarProdutoCarrinho(TrabalhoFinal._03_Entidades.Carrinho)">
+        <member name="M:API.Controllers.CarrinhoController.EditarProdutoCarrinho(System.Int32)">
             <summary>
             Edita os produtos selecionados pelo usuário do carrinho
             </summary>

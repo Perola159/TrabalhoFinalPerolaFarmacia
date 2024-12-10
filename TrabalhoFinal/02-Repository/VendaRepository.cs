@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrabalhoFinal._02_Repository.Interfaces;
-using TrabalhoFinal._02_Repository.Interfaces.TrabalhoFinal._02_Repository.Interfaces;
+
 using TrabalhoFinal._03_Entidades;
 
 namespace TrabalhoFinal._02_Repository

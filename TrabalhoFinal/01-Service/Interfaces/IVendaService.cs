@@ -7,9 +7,9 @@ namespace TrabalhoFinal._01_Service.Interfaces
     public interface IVendaService
     {
         void AdicionarVenda(Venda venda);
-        void RemoverVenda(int id);
         Venda BuscarVendaPorId(int id);
         void EditarVenda(Venda venda);
-        List<VendaComCarrinhoDTO> ListarVendasComCarrinho(); // Método detalhado
+        void RemoverVenda(int id);
+        List<VendaComCarrinhoDTO> ListarVendasComCarrinho();
     }
 }

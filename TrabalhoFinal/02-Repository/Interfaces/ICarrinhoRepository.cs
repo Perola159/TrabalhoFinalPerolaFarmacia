@@ -10,5 +10,10 @@ namespace TrabalhoFinal._02_Repository.Interfaces
         Carrinho BuscarCarrinhoPorId(int id);
         void EditarProdutoCarrinho(int id);
         List<CarrinhoDTO> ListarCarrinhosComDetalhes();
+        void DeletarCarrinho(int id);
+
+
+
+
     }
 }
