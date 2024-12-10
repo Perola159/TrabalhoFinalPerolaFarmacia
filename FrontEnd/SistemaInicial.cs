@@ -1,5 +1,6 @@
 ﻿using FrontEnd.Models;
 using FrontEnd.Models.UseCases;
+using TrabalhoFinal._03_Entidades;
 
 namespace FrontEnd
 {

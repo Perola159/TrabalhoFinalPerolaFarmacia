@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using FrontEnd.Models;
+using TrabalhoFinal._03_Entidades;
 
 namespace FrontEnd.Models.UseCases
 {

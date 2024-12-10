@@ -25,22 +25,22 @@ namespace TrabalhoFinal._01_Services
             {
                 throw new ArgumentException("Pessoa ou Produto inválido.");
             }
-            _repository.AdicionarContrib(C);
+            _repository.AdicionarProdutoCarrinho(C);
         }
 
         public List<CarrinhoDTO> ListarProdutoCarrinho()
         {
-            return _repository.Listar();
+            return _repository.ListarCarrinhosComDetalhes();
         }
 
-        public void EditarProdutoCarrinho(Carrinho c)
+        public void EditarProdutoCarrinho(int id)
         {
-            _repository.EditarProdutoCarrinho(c);
+            _repository.EditarProdutoCarrinho(id);
         }
 
         public void DeletarProdutoCarrinho(int id)
         {
-            _repository.DeletarProdutoCarrinho(id);  
+            _repository.DeletarCarrinho(id);  
         }
 
 

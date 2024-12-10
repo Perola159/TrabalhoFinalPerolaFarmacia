@@ -12,8 +12,9 @@ namespace TrabalhoFinal._01_Service.Interfaces
     {
         void AdicionarProdutoCarrinho(Carrinho C);
         List<CarrinhoDTO> ListarProdutoCarrinho();  
-        void EditarProdutoCarrinho(Carrinho c);
-       void DeletarProdutoCarrinho(int id); 
+        void EditarProdutoCarrinho(int id);
+       void DeletarProdutoCarrinho(int id);
+        
     }
 
 }

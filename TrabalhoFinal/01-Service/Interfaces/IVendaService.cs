@@ -8,9 +8,8 @@ namespace TrabalhoFinal._01_Service.Interfaces
     {
         void AdicionarVenda(Venda venda);
         void RemoverVenda(int id);
-        List<Venda> ListarVendas();  
         Venda BuscarVendaPorId(int id);
         void EditarVenda(Venda venda);
-        List<VendaDTO> ListarVendasComCarrinho();
+        List<VendaComCarrinhoDTO> ListarVendasComCarrinho(); // Método detalhado
     }
 }

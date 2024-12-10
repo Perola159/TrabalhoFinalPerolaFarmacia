@@ -44,7 +44,7 @@ namespace API.Controllers
         {
             try
             {
-                var vendas = _service.ListarVendas();
+                var vendas = _service.ListarVendasComCarrinho();
                 return Ok(vendas);
             }
             catch (Exception erro)
@@ -126,6 +126,7 @@ namespace API.Controllers
                 return BadRequest("Ocorreu um erro ao listar as vendas com carrinho: " + erro.Message);
             }
         }
+
 
     }
 }
