@@ -2,8 +2,8 @@
 {
     public class Carrinho
     {
-        public int Id { get; set; }        // ID do Carrinho
-        public int IdPessoa { get; set; }  // ID da Pessoa
-        public int IdProduto { get; set; } // ID do Produto
+        public int Id { get; set; }        
+        public int IdPessoa { get; set; }  
+        public int IdProduto { get; set; } 
     }
 }

@@ -9,11 +9,13 @@ namespace TrabalhoFinal._01_Services
     {
         private readonly ICarrinhoRepository _repository;
 
+        // Construtor que recebe o repositório
         public CarrinhoService(ICarrinhoRepository repository)
         {
             _repository = repository;
         }
 
+        // Método para adicionar um produto ao carrinho
         public void AdicionarProdutoCarrinho(Carrinho carrinho)
         {
             // Validação simplificada
@@ -24,14 +26,24 @@ namespace TrabalhoFinal._01_Services
             _repository.AdicionarProdutoCarrinho(carrinho);
         }
 
+        // Método para listar os carrinhos com detalhes
         public List<CarrinhoDTO> ListarProdutoCarrinho()
         {
             return _repository.ListarCarrinhosComDetalhes();
         }
 
+        // Método para deletar um carrinho
         public void DeletarProdutoCarrinho(int id)
         {
             _repository.DeletarCarrinho(id);
+        }
+
+        // Método para editar um produto no carrinho (ainda não implementado)
+        public void EditarProdutoCarrinho(Carrinho carrinho)
+        {
+            // Aqui podemos implementar a lógica de editar um produto no carrinho, se necessário
+            // Por enquanto, deixamos ele vazio ou podemos lançar um NotImplementedException
+            throw new NotImplementedException("EditarProdutoCarrinho ainda não foi implementado.");
         }
     }
 }
