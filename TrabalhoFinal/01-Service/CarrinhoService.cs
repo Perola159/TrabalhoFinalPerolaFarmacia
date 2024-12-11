@@ -33,9 +33,9 @@ namespace TrabalhoFinal._01_Services
             return _repository.ListarCarrinhosComDetalhes();
         }
 
-        public void EditarProdutoCarrinho(int id)
+        public void EditarProdutoCarrinho(Carrinho car)
         {
-            _repository.EditarProdutoCarrinho(id);
+            _repository.EditarProdutoCarrinho(car);
         }
 
         public void DeletarProdutoCarrinho(int id)

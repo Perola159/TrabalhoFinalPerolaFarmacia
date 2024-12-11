@@ -1,4 +1,6 @@
-﻿using TrabalhoFinal._02_Repository.Interfaces;
+﻿using System.Runtime.Intrinsics.X86;
+using System;
+using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 using TrabalhoFinal._03_Entidades.DTOS;
 
@@ -27,26 +29,30 @@ namespace TrabalhoFinal._02_Repository
             return _carrinhos.FirstOrDefault(c => c.Id == id);
         }
 
-        public void EditarProdutoCarrinho(int id)
+        public void EditarProdutoCarrinho(Carrinho carrinhoEditado)
         {
-            var carrinho = _carrinhos.FirstOrDefault(c => c.Id == id);
+            var carrinho = _carrinhos.FirstOrDefault(c => c.Id == carrinhoEditado.Id);
             if (carrinho != null)
             {
-                // Lógica de edição aqui
+                carrinho.IdPessoa = carrinhoEditado.IdPessoa;
+                carrinho.IdProduto = carrinhoEditado.IdProduto;
+                // Atualize outros campos necessários
             }
         }
 
         public List<CarrinhoDTO> ListarCarrinhosComDetalhes()
         {
+            // Lista sem incluir "Itens"
             return _carrinhos.Select(c => new CarrinhoDTO
             {
+                //A interrogação?.é tipo uma forma de "perguntar" se
+                //o objeto existe antes de tentar acessar algo dentro dele.
                 Id = c.Id,
-                Itens = c.Itens.Select(i => new Item
-                {
-                    ProdutoId = i.ProdutoId,
-                    Quantidade = i.Quantidade,
-                    Preco = i.Preco
-                }).ToList()
+                IdPessoa = c.IdPessoa,   
+                NomePessoa = c.Pessoa?.Nome ?? "Nome não informado",
+                IdProduto = c.IdProduto,
+                NomeProduto = c.Produto?.Nome ?? "Produto não informado",
+                PrecoProduto = c.Produto?.Preco ?? 0
             }).ToList();
         }
 
@@ -58,7 +64,5 @@ namespace TrabalhoFinal._02_Repository
                 _carrinhos.Remove(carrinho);
             }
         }
-
     }
 }
-

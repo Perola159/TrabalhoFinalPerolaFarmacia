@@ -10,10 +10,9 @@ namespace TrabalhoFinal._03_Entidades
         public int IdPessoa { get; set; }
         public int IdProduto { get; set; }
         public List<Item> Itens { get; set; } // Lista de Itens no Carrinho
+        public Pessoa Pessoa { get; set; }  // Objeto Pessoa
+        public Produtos Produto { get; set; }
 
-       
-        
-        
     }
 
 }

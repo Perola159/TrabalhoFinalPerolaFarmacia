@@ -14,7 +14,7 @@ namespace TrabalhoFinal._03_Entidades.DTOS
         public int IdProduto { get; set; }
         public string NomeProduto { get; set; }  
         public decimal PrecoProduto { get; set; }
-        public List<Item> Itens { get; set; }
+        //public List<Item> Itens { get; set; }
    
 
 
