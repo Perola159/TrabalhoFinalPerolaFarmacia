@@ -1,109 +1,57 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TrabalhoFinal._01_Service.Interfaces;
-using TrabalhoFinal._01_Services;
 using TrabalhoFinal._03_Entidades;
 using TrabalhoFinal._03_Entidades.DTOS;
 
-namespace API.Controllers;
-[ApiController]
-[Route("[controller]")]
-public class CarrinhoController : ControllerBase
+namespace TrabalhoFinal._05_API.Controllers
 {
-    private readonly ICarrinhoService _service;
-
-
-    public CarrinhoController(ICarrinhoService service)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CarrinhoController : ControllerBase
     {
+        private readonly ICarrinhoService _service;
 
-        _service = service;
-
-    }
-
-
-    /// <summary>
-    /// Adiciona os produtos do usuario logado no carrinho 
-    /// </summary>
-    /// <param name="carrinho"></param>
-    /// 
-    [HttpPost("Adicionar-carrinho")]
-    public IActionResult AdicionarProdutoCarrinho(Carrinho carrinho)
-    {
-        try
+        public CarrinhoController(ICarrinhoService service)
         {
-            _service.AdicionarProdutoCarrinho(carrinho);
-            return Ok();
+            _service = service;
         }
-        catch (Exception erro)
-        {
-            return BadRequest ("Ocorreu um erro +" +
-                "o erro foi: " + erro.Message);
-          
-        }
-    }
 
+        // Adiciona produto ao carrinho
+        [HttpPost("AdicionarProdutoCarrinho")]
+        public IActionResult AdicionarProdutoCarrinho([FromBody] Carrinho carrinho)
+        {
+            try
+            {
+                _service.AdicionarProdutoCarrinho(carrinho);
+                return Ok("Produto adicionado ao carrinho.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
 
-    /// <summary>
-    /// Lista os produtos que o usuário selecionou no carrinho 
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet("Listar-carrinho")]
-    public List<CarrinhoDTO> Listar()
-    {
-        try
+        // Lista os carrinhos
+        [HttpGet("ListarCarrinhos")]
+        public IActionResult ListarCarrinhos()
         {
-            return _service.ListarProdutoCarrinho();
+            var carrinhos = _service.ListarProdutoCarrinho();
+            return Ok(carrinhos);
         }
-        catch (Exception erro)
-        {
-            throw new Exception($"Ocorreu um erro ao listar carrinho {erro.Message}");
-        }
-    }
-   
-    /// <summary>
-    /// Edita os produtos selecionados pelo usuário do carrinho
-    /// </summary>
-    /// <param name="c"></param>
-    /// 
-    [HttpPut("editar-Carrinho")]
-    public IActionResult EditarProdutoCarrinho(int id)
-    {
-        try
-        {
-            _service.EditarProdutoCarrinho(id);
-            return Ok();
-        }
-        catch (Exception erro)
-        {
-            return BadRequest("Ocorreu um erro +" +
-                "o erro foi: " + erro.Message);
-        }
-        
-    }
 
-
-    /// <summary>
-    /// Delete o produto selecionado por ID
-    /// </summary>
-    /// <param name="c"></param>
- 
-    [HttpDelete("deletar-Produto-do-Carrinho")]
-    public IActionResult DeletarProdutoCarrinho(int id)
-    {
-        try
+        // Deleta carrinho
+        [HttpDelete("DeletarCarrinho/{id}")]
+        public IActionResult DeletarCarrinho(int id)
         {
-            _service.DeletarProdutoCarrinho(id);  // Chama o método de deleção
-            return Ok();
-        }
-        catch (Exception erro)
-        {
-            return BadRequest("Ocorreu um erro: " + erro.Message);
+            try
+            {
+                _service.DeletarProdutoCarrinho(id);
+                return Ok("Carrinho deletado.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
         }
     }
-
-
 }
-
-
-
-

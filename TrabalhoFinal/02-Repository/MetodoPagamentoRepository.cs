@@ -22,7 +22,7 @@ namespace TrabalhoFinal._02_Repository
         {
             using (var connection = new SQLiteConnection(_connectionString))
             {
-                var query = "INSERT INTO MetodoPagamento (Nome, Tipo, Ativo, TaxaTransacao) VALUES (@Nome, @Tipo, @Ativo, @TaxaTransacao)";
+                var query = "INSERT INTO MetodoPagamentos (Nome, Tipo, Ativo, TaxaTransacao) VALUES (@Nome, @Tipo, @Ativo, @TaxaTransacao)";
                 connection.Execute(query, metodoPagamento);
             }
         }
@@ -32,7 +32,7 @@ namespace TrabalhoFinal._02_Repository
         {
             using (var connection = new SQLiteConnection(_connectionString))
             {
-                var query = "SELECT * FROM MetodoPagamento";
+                var query = "SELECT * FROM MetodoPagamentos";
                 return connection.Query<MetodoPagamento>(query).ToList();
             }
         }
@@ -42,7 +42,7 @@ namespace TrabalhoFinal._02_Repository
         {
             using (var connection = new SQLiteConnection(_connectionString))
             {
-                var query = "SELECT * FROM MetodoPagamento WHERE Id = @Id";
+                var query = "SELECT * FROM MetodoPagamentos WHERE Id = @Id";
                 return connection.QueryFirstOrDefault<MetodoPagamento>(query, new { Id = id });
             }
         }
@@ -52,7 +52,7 @@ namespace TrabalhoFinal._02_Repository
         {
             using (var connection = new SQLiteConnection(_connectionString))
             {
-                var query = "UPDATE MetodoPagamento SET Nome = @Nome, Tipo = @Tipo, Ativo = @Ativo, TaxaTransacao = @TaxaTransacao WHERE Id = @Id";
+                var query = "UPDATE MetodoPagamentos SET Nome = @Nome, Tipo = @Tipo, Ativo = @Ativo, TaxaTransacao = @TaxaTransacao WHERE Id = @Id";
                 connection.Execute(query, metodoPagamento);
             }
         }
@@ -62,7 +62,7 @@ namespace TrabalhoFinal._02_Repository
         {
             using (var connection = new SQLiteConnection(_connectionString))
             {
-                var query = "DELETE FROM MetodoPagamento WHERE Id = @Id";
+                var query = "DELETE FROM MetodoPagamentos WHERE Id = @Id";
                 connection.Execute(query, new { Id = id });
             }
         }

@@ -21,7 +21,7 @@ namespace API.Controllers
         /// </summary>
         /// <param name="metodoPagamento"></param>
         [HttpPost("Adicionar-metodo-pagamento")]
-        public IActionResult AdicionarMetodoPagamento([FromBody] MetodoPagamento metodoPagamento)
+        public IActionResult AdicionarMetodoPagamento(MetodoPagamento metodoPagamento)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace API.Controllers
         /// </summary>
         /// <param name="metodoPagamento"></param>
         [HttpPut("Editar-metodo-pagamento")]
-        public IActionResult EditarMetodoPagamento([FromBody] MetodoPagamento metodoPagamento)
+        public IActionResult EditarMetodoPagamento([FromQuery] MetodoPagamento metodoPagamento)
         {
             try
             {

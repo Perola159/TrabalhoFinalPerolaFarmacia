@@ -4,32 +4,6 @@
         <name>API</name>
     </assembly>
     <members>
-        <member name="M:API.Controllers.CarrinhoController.AdicionarProdutoCarrinho(TrabalhoFinal._03_Entidades.Carrinho)">
-            <summary>
-            Adiciona os produtos do usuario logado no carrinho 
-            </summary>
-            <param name="carrinho"></param>
-            
-        </member>
-        <member name="M:API.Controllers.CarrinhoController.Listar">
-            <summary>
-            Lista os produtos que o usuário selecionou no carrinho 
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.CarrinhoController.EditarProdutoCarrinho(System.Int32)">
-            <summary>
-            Edita os produtos selecionados pelo usuário do carrinho
-            </summary>
-            <param name="c"></param>
-            
-        </member>
-        <member name="M:API.Controllers.CarrinhoController.DeletarProdutoCarrinho(System.Int32)">
-            <summary>
-            Delete o produto selecionado por ID
-            </summary>
-            <param name="c"></param>
-        </member>
         <member name="M:API.Controllers.EnderecoController.#ctor(TrabalhoFinal._01_Service.Interfaces.IEnderecoService)">
             <summary>
             Endpoint para criar usuarios no banco de dados 

@@ -1,31 +1,27 @@
-﻿using AutoMapper;
-using CRUD_DAPPER;
-using TrabalhoFinal._01_Service.Interfaces;
+﻿using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
 using TrabalhoFinal._03_Entidades.DTOS;
-using static TrabalhoFinal._01_Services.CarrinhoService;
 
 namespace TrabalhoFinal._01_Services
 {
-
     public class CarrinhoService : ICarrinhoService
     {
         private readonly ICarrinhoRepository _repository;
 
-        public CarrinhoService(ICarrinhoRepository config)
+        public CarrinhoService(ICarrinhoRepository repository)
         {
-            _repository = config;
+            _repository = repository;
         }
 
-        public void AdicionarProdutoCarrinho(Carrinho C)
+        public void AdicionarProdutoCarrinho(Carrinho carrinho)
         {
-            // Verificando se IdPessoa e IdProduto são válidos
-            if (C.IdPessoa <= 0 || C.IdProduto <= 0)
+            // Validação simplificada
+            if (carrinho.IdPessoa <= 0 || carrinho.IdProduto <= 0)
             {
                 throw new ArgumentException("Pessoa ou Produto inválido.");
             }
-            _repository.AdicionarProdutoCarrinho(C);
+            _repository.AdicionarProdutoCarrinho(carrinho);
         }
 
         public List<CarrinhoDTO> ListarProdutoCarrinho()
@@ -33,16 +29,9 @@ namespace TrabalhoFinal._01_Services
             return _repository.ListarCarrinhosComDetalhes();
         }
 
-        public void EditarProdutoCarrinho(Carrinho car)
-        {
-            _repository.EditarProdutoCarrinho(car);
-        }
-
         public void DeletarProdutoCarrinho(int id)
         {
-            _repository.DeletarCarrinho(id);  
+            _repository.DeletarCarrinho(id);
         }
-
-
     }
 }

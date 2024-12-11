@@ -1,18 +1,9 @@
-﻿using Dapper.Contrib.Extensions;
-
-
-namespace TrabalhoFinal._03_Entidades
+﻿namespace TrabalhoFinal._03_Entidades
 {
-   
     public class Carrinho
     {
-        public int Id { get; set; }  // ID do Carrinho
-        public int IdPessoa { get; set; }
-        public int IdProduto { get; set; }
-        public List<Item> Itens { get; set; } // Lista de Itens no Carrinho
-        public Pessoa Pessoa { get; set; }  // Objeto Pessoa
-        public Produtos Produto { get; set; }
-
+        public int Id { get; set; }        // ID do Carrinho
+        public int IdPessoa { get; set; }  // ID da Pessoa
+        public int IdProduto { get; set; } // ID do Produto
     }
-
 }

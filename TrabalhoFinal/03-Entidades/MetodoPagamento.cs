@@ -1,4 +1,8 @@
-﻿namespace TrabalhoFinal._03_Entidades
+﻿
+
+using Dapper.Contrib.Extensions;
+
+namespace TrabalhoFinal._03_Entidades
 {
     public class MetodoPagamento
     {
@@ -9,3 +13,4 @@
         public decimal TaxaTransacao { get; set; } // Taxa de transação, se TIVER
     }
 }
+

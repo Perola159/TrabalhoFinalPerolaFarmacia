@@ -60,13 +60,14 @@ namespace TrabalhoFinal._02_Repository.DATA
 
 
             criarTabela += @"   
-                 CREATE TABLE IF NOT EXISTS MetodoPagamentos(
-                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 Nome TEXT NOT NULL,
-                 Tipo TEXT NOT NULL,
-                 Ativo BOOLEAN NOT NULL,
-                 TaxaTransacao DECIMAL(5, 2)
-                 );";
+                CREATE TABLE IF NOT EXISTS MetodoPagamentos (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Nome TEXT,
+                Tipo TEXT,
+                Ativo BOOLEAN,
+                TaxaTransacao DECIMAL
+             ); ";
+
 
 
 
