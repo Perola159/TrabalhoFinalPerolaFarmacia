@@ -58,6 +58,7 @@ namespace FrontEnd
                 Console.WriteLine("3 - Listar Usuario Cadastrados");
                 return int.Parse(Console.ReadLine());
             }
+
             public Pessoa CriarUsuario()
             {
                 Pessoa usuario = new Pessoa();
@@ -153,5 +154,16 @@ namespace FrontEnd
                 }
             }
         }
+
+    //public void ListarVenda(int id)
+    //{
+    //    Supondo que você já tenha um método para pegar a venda com detalhes
+    //   var venda = _vendaUC.ObterVendaDetalhada(id);
+    //    Console.WriteLine($"Venda ID: {venda.Id}");
+    //    foreach (var item in venda.Produtos)
+    //    {
+    //        Console.WriteLine($"Produto: {item.Nome}, Preço: {item.Preco}, Quantidade: {item.Quantidade}");
+    //    }
+    //}
 }
 

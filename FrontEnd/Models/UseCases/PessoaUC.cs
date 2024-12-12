@@ -9,6 +9,11 @@ namespace FrontEnd.Models.UseCases
         {
             _client = cliente;
         }
+
+        //public async Task<List<Pessoa>> ListarUsuariosAsync()
+        //{
+        //    return await _client.GetFromJsonAsync<List<Pessoa>>("Pessoa/listar-Pessoa");
+        //}
         public List<Pessoa> ListarUsuarios()
         {
             return _client.GetFromJsonAsync<List<Pessoa>>("Pessoa/listar-Pessoa").Result;

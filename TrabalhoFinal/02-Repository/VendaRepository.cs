@@ -1,60 +1,72 @@
 ﻿using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrabalhoFinal._02_Repository.Interfaces;
-
 using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
-namespace TrabalhoFinal._02_Repository
+public class VendaRepository : IVendaRepository
 {
-    public class VendaRepository : IVendaRepository
+    private readonly string _connectionString;
+    private readonly string _vendaRepository;
+    private readonly string _carrinhoService; 
+
+    public VendaRepository(IConfiguration config)
     {
-        private readonly string ConnectionString;
+        _connectionString = config.GetConnectionString("DefaultConnection");
+    }
 
-        public VendaRepository(IConfiguration config)
-        {
-            ConnectionString = config.GetConnectionString("DefaultConnection");
-        }
 
-       
-        public void AdicionarVenda(Venda venda)
-        {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Venda>(venda);
-        }
 
-        
-        public List<Venda> ListarVenda() 
-        {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Venda>().ToList(); 
-        }
+    public List<VendaComCarrinhoDTO> ListarVenda()
+    {
+        // Corrigido: garantir que estamos pegando uma lista de objetos Venda
+        var vendas = _vendaRepository.ListarVenda();
 
-       
-        public Venda BuscarVendaPorId(int id)  
+        // Convertendo para a DTO (VendaComCarrinhoDTO) 
+        var vendasComCarrinho = vendas.Select(v => new VendaComCarrinhoDTO
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Venda>(id); 
-        }
+            IdVenda = v.Id,
+            IdCarrinho = v.IdCarrinho,
+            ItensCarrinho = _carrinhoService.ListarProdutoCarrinho() // Use o serviço do carrinho para obter os itens
+        }).ToList();
 
-       
-        public void EditarVenda(Venda venda)
-        {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Venda>(venda);
-        }
+        return vendasComCarrinho;
+    }
 
-      
-        public void RemoverVenda(int id)
-        {
-            using var connection = new SQLiteConnection(ConnectionString);
-            Venda removendovenda = BuscarVendaPorId(id);  
-            connection.Delete<Venda>(removendovenda);  
-        }
+
+    public Venda BuscarVendaPorId(int id)
+    {
+        using var connection = new SQLiteConnection(_connectionString);
+        return connection.Get<Venda>(id);
+    }
+
+    // Este método vai buscar o carrinho associado à venda
+    public Carrinho BuscarCarrinhoPorId(int carrinhoId)
+    {
+        using var connection = new SQLiteConnection(_connectionString);
+        return connection.Get<Carrinho>(carrinhoId);  // Assume que você tem a classe Carrinho e ela tem os itens
+    }
+
+    public void AdicionarVenda(Venda venda)
+    {
+        using var connection = new SQLiteConnection(_connectionString);
+        connection.Insert<Venda>(venda);
+    }
+
+
+    public void EditarVenda(Venda venda)
+    {
+        using var connection = new SQLiteConnection(_connectionString);
+        connection.Update<Venda>(venda);
+    }
+
+
+
+    public void RemoverVenda(int id)
+    {
+        using var connection = new SQLiteConnection(_connectionString);
+        Venda removendovenda = BuscarVendaPorId(id);
+        connection.Delete<Venda>(removendovenda);
     }
 }
