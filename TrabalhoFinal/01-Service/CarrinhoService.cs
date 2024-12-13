@@ -14,10 +14,10 @@ namespace TrabalhoFinal._01_Services
             _repository = repository;
         }
 
-     
+
         public void AdicionarProdutoCarrinho(Carrinho carrinho)
         {
-          
+
             if (carrinho.IdPessoa <= 0 || carrinho.IdProduto <= 0)
             {
                 throw new ArgumentException("Pessoa ou Produto inválido.");
@@ -36,10 +36,10 @@ namespace TrabalhoFinal._01_Services
             _repository.DeletarCarrinho(id);
         }
 
-        
+
         public void EditarProdutoCarrinho(Carrinho carrinho)
         {
-    
+
             throw new NotImplementedException("EditarProdutoCarrinho ainda não foi implementado.");
         }
     }

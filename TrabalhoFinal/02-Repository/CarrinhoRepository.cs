@@ -15,10 +15,10 @@ namespace TrabalhoFinal._02_Repository
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
-    
 
 
-    public void AdicionarProdutoCarrinho(Carrinho carrinho)
+
+        public void AdicionarProdutoCarrinho(Carrinho carrinho)
         {
             using var connection = new SQLiteConnection(_connectionString);
             var sql = "INSERT INTO Carrinhos (IdPessoa, IdProduto) VALUES (@IdPessoa, @IdProduto)";
@@ -30,27 +30,17 @@ namespace TrabalhoFinal._02_Repository
         {
             using var connection = new SQLiteConnection(_connectionString);
 
+
             var sql = @"
-        SELECT 
-            c.Id AS CarrinhoId,
-            c.IdPessoa,
-            c.IdProduto
-        FROM Carrinhos c
-        LEFT JOIN Produtos p ON c.IdProduto = p.Id"; // Certifique-se de que o produto está sendo relacionado
+                SELECT 
+                    c.Id AS CarrinhoId,
+                    c.IdPessoa,
+                    c.IdProduto
+                FROM Carrinhos c";
 
-            var carrinhos = connection.Query<CarrinhoDTO, Item, CarrinhoDTO>(
-                sql,
-                (carrinho, item) =>
-                {
-                    carrinho.Itens = carrinho.Itens ?? new List<Item>();
-                    carrinho.Itens.Add(item);
-                    return carrinho;
-                },
-                splitOn: "IdProduto").ToList();
-
-            return carrinhos;
+            var result = connection.Query<CarrinhoDTO>(sql).ToList();
+            return result;
         }
-
 
 
         public void DeletarCarrinho(int id)
@@ -60,10 +50,10 @@ namespace TrabalhoFinal._02_Repository
             connection.Execute(sql, new { Id = id });
         }
 
-      
+
         public void EditarProdutoCarrinho(Carrinho carrinho)
         {
-    
+
             throw new NotImplementedException("EditarProdutoCarrinho não está implementado.");
         }
     }

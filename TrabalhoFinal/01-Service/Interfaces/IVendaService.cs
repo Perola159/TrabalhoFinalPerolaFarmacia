@@ -1,10 +1,15 @@
-﻿using TrabalhoFinal._03_Entidades.DTOS;
+﻿using System.Collections.Generic;
+using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
-public interface IVendaService
+namespace TrabalhoFinal._01_Service.Interfaces
 {
-    void AdicionarVenda(Venda venda);
-    Venda BuscarVendaPorId(int id);
-    void EditarVenda(Venda venda);
-    List<VendaComCarrinhoDTO> ListarVendasComCarrinho();
-    void RemoverVenda(int id);
+    public interface IVendaService
+    {
+        void AdicionarVenda(Venda venda);
+        Venda BuscarVendaPorId(int id);
+        void EditarVenda(Venda venda);
+        void RemoverVenda(int id);
+        List<VendaComCarrinhoDTO> ListarVendasComCarrinho();
+    }
 }

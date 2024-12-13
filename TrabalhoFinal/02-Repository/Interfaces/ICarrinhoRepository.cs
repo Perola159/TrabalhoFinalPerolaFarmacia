@@ -7,10 +7,10 @@ namespace TrabalhoFinal._02_Repository.Interfaces
     {
         void AdicionarProdutoCarrinho(Carrinho carrinho);
 
-   
+
         void EditarProdutoCarrinho(Carrinho carrinho);
 
-    
+
         List<CarrinhoDTO> ListarCarrinhosComDetalhes();
 
         void DeletarCarrinho(int id);
