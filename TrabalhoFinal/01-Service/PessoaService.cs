@@ -2,6 +2,7 @@
 using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._02_Repository.Interfaces;
 using TrabalhoFinal._03_Entidades;
+
 using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace TrabalhoFinal._01_Services
@@ -16,6 +17,23 @@ namespace TrabalhoFinal._01_Services
         {
             _repository = repository;
             _repositoryEndereco = repositoryy;
+        }
+
+        public Pessoa FazerLogin(UsuarioLoginDTO usuarioLogin)
+        {
+            List<Pessoa> listUsuario = ListarPessoa();
+
+            foreach (Pessoa usuario in listUsuario)
+            {
+                if (usuario.Username == usuarioLogin.Username
+                     && usuario.Senha == usuarioLogin.Senha)
+                {
+                    return usuario;
+                }
+
+            }
+
+            return null;
         }
 
 

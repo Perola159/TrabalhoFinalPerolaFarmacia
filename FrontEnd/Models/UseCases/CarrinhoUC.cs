@@ -15,9 +15,9 @@ namespace FrontEnd.Models.UseCases
         {
             HttpResponseMessage response = _client.PostAsJsonAsync("Carrinho/adicionar-carrinho", carrinho).Result;
         }
-        public List<ReadCarrinhoDTO> ListarCarrinhoUsuarioLogado(int usuarioId)
+        public List<ReadCarrinhoDTO> ListarCarrinhoUsuarioLogado()
         {
-            return _client.GetFromJsonAsync<List<ReadCarrinhoDTO>>("Carrinho/listar-carrinho-do-usuario?usuarioId=" + usuarioId).Result;
+            return _client.GetFromJsonAsync<List<ReadCarrinhoDTO>>("Carrinho/ListarCarrinhos").Result;
         }
     }
 }

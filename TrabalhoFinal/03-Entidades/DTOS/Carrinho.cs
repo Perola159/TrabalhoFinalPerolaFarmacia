@@ -1,12 +1,9 @@
-﻿using TrabalhoFinal._03_Entidades;
-
-public class Carrinho
+﻿namespace TrabalhoFinal._03_Entidades
 {
-    public int Id { get; set; }
-    public int IdPessoa { get; set; }
-    public List<Item> Itens { get; set; }
-
-  
-
-    public int IdProduto { get; internal set; }
+    public class Carrinho
+    {
+        public int Id { get; set; }
+        public int IdPessoa { get; set; }
+        public int IdProduto { get; set; }
+    }
 }

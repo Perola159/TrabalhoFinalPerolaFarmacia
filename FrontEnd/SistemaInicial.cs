@@ -1,6 +1,7 @@
 ﻿using FrontEnd.Models;
 using FrontEnd.Models.UseCases;
 using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace FrontEnd
 {
@@ -52,7 +53,7 @@ namespace FrontEnd
             }
             public int ExibirLogin()
             {
-                Console.WriteLine("--------- LOGIN ---------");
+                Console.WriteLine("========== LOGIN ==========");
                 Console.WriteLine("1 - Deseja Fazer Login");
                 Console.WriteLine("2 - Deseja se Cadastrar");
                 Console.WriteLine("3 - Listar Usuario Cadastrados");
@@ -72,39 +73,44 @@ namespace FrontEnd
                 usuario.Email = Console.ReadLine();
                 return usuario;
             }
-            public Produto CriarProduto()
+
+        public void FazerLogin()
+        {
+            Console.WriteLine("Digite seu username: ");
+            string username = Console.ReadLine();
+            Console.WriteLine("Digite sua senha: ");
+            string senha = Console.ReadLine();
+            UsuarioLoginDTO usuDTO = new UsuarioLoginDTO
+            {
+                Username = username,
+                Senha = senha
+            };
+            Pessoa usuario = _usuarioUC.FazerLogin(usuDTO);
+            if (usuario == null)
+            {
+                Console.WriteLine("Usuário ou senha inválidos!!!");
+            }
+            UsuarioLogado = usuario;
+        }
+
+        public Produto CriarProduto()
             {
                 Produto usuario = new Produto();
-                Console.WriteLine("Digite seu nome: ");
+                Console.WriteLine("Digite o nome do produto: ");
                 usuario.Nome = Console.ReadLine();
-                Console.WriteLine("Digite seu preco: ");
+                Console.WriteLine("Digite o preço do produto: ");
                 usuario.Preco = double.Parse(Console.ReadLine());
                 return usuario;
             }
-            public void FazerLogin()
-            {
-                Console.WriteLine("Digite seu username: ");
-                string username = Console.ReadLine();
-                Console.WriteLine("Digite sua senha: ");
-                string senha = Console.ReadLine();
-                UsuarioLoginDTO usuDTO = new UsuarioLoginDTO
-                {
-                    Username = username,
-                    Senha = senha
-                };
-                Pessoa usuario = _usuarioUC.FazerLogin(usuDTO);
-                if (usuario == null)
-                {
-                    Console.WriteLine("Usuário ou senha inválidos!!!");
-                }
-                UsuarioLogado = usuario;
-            }
+            
             public void ExibirMenuPrincipal()
             {
+            Console.WriteLine("==========ESCOLHA UMA DAS OPÇÕES ABAIXO==========");
+                Console.WriteLine("Qual operação deseja realizar?");
                 Console.WriteLine("1 - Listar Produtos");
                 Console.WriteLine("2 - Cadastrar Produto");
                 Console.WriteLine("3 - Realizar uma compra");
-                Console.WriteLine("Qual operação deseja realizar?");
+              
                 int resposta = int.Parse(Console.ReadLine());
 
                 if (resposta == 1)
@@ -115,7 +121,7 @@ namespace FrontEnd
                 {
                     Produto produto = CriarProduto();
                     _produtoUC.CadastrarProduto(produto);
-                    Console.WriteLine("Usuário cadastrado com sucesso");
+                    Console.WriteLine("Produto cadastrado com sucesso");
                 }
                 else if (resposta == 3)
                 {
@@ -145,7 +151,50 @@ namespace FrontEnd
                 }
             }
 
-            private void ListarProdutos()
+
+        public void FinalizarCompra()
+        {
+            
+            List<ReadCarrinhoDTO> carrinhosDTO = _carrinhoUC.ListarCarrinhoUsuarioLogado(UsuarioLogado.Id);
+            decimal totalCompra = carrinhosDTO.Sum(c => c.PrecoTotal);
+
+            Console.WriteLine($"O total da compra é: R$ {totalCompra:F2}");
+            Console.WriteLine("Escolha o método de pagamento:");
+            Console.WriteLine("1 - Dinheiro\n2 - Cartão\n3 - PIX");
+            int metodo = int.Parse(Console.ReadLine());
+
+            if (metodo == 1)
+            {
+                Console.WriteLine("Informe o valor pago em dinheiro:");
+                decimal valorPago = decimal.Parse(Console.ReadLine());
+                if (valorPago >= totalCompra)
+                {
+                    decimal troco = valorPago - totalCompra;
+                    Console.WriteLine($"Pagamento realizado! Troco: R$ {troco:F2}");
+                }
+                else
+                {
+                    Console.WriteLine("Valor insuficiente para a compra.");
+                    return;
+                }
+            }
+            else if (metodo == 2)
+            {
+                Console.WriteLine("Pagamento realizado no cartão!");
+            }
+            else if (metodo == 3)
+            {
+                Console.WriteLine("Insira o código do PIX:");
+                string pixCode = Console.ReadLine();
+                Console.WriteLine($"Pagamento via PIX ({pixCode}) realizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Método de pagamento inválido.");
+                return;
+            }
+        }
+        private void ListarProdutos()
             {
                 List<Produto> produtos = _produtoUC.ListarProduto();
                 foreach (Produto u in produtos)
@@ -155,15 +204,6 @@ namespace FrontEnd
             }
         }
 
-    //public void ListarVenda(int id)
-    //{
-    //    Supondo que você já tenha um método para pegar a venda com detalhes
-    //   var venda = _vendaUC.ObterVendaDetalhada(id);
-    //    Console.WriteLine($"Venda ID: {venda.Id}");
-    //    foreach (var item in venda.Produtos)
-    //    {
-    //        Console.WriteLine($"Produto: {item.Nome}, Preço: {item.Preco}, Quantidade: {item.Quantidade}");
-    //    }
-    //}
+
 }
 

@@ -8,6 +8,7 @@ namespace FrontEnd
         public int Id { get; set; }
         public Pessoa Usuario { get; set; }
         public Produto Produto { get; set; }
+        public decimal PrecoTotal { get; set; }
 
         public override string ToString()
         {

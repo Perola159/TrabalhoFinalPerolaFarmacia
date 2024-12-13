@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace FrontEnd.Models.UseCases
 {
@@ -24,7 +25,7 @@ namespace FrontEnd.Models.UseCases
         }
         public Pessoa FazerLogin(UsuarioLoginDTO usuLogin)
         {
-            HttpResponseMessage response = _client.PostAsJsonAsync("Usuario/fazer-login", usuLogin).Result;
+            HttpResponseMessage response = _client.PostAsJsonAsync("Pessoa/fazer-login", usuLogin).Result;
             Pessoa usuario = response.Content.ReadFromJsonAsync<Pessoa>().Result;
             return usuario;
         }

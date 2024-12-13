@@ -2,6 +2,7 @@
 using TrabalhoFinal._01_Service.Interfaces;
 using TrabalhoFinal._01_Services;
 using TrabalhoFinal._03_Entidades;
+using TrabalhoFinal._03_Entidades.DTOS;
 
 namespace API.Controllers
 {
@@ -14,6 +15,12 @@ namespace API.Controllers
         public PessoaController(IPessoaService service)
         {
             _service = service; //injecao de dependecia aplicada 
+        }
+
+        [HttpPost("Fazer-Login")]
+        public Pessoa fazerLogin(UsuarioLoginDTO usuarioLogin)
+        {
+            return _service.FazerLogin(usuarioLogin);
         }
 
         /// <summary>

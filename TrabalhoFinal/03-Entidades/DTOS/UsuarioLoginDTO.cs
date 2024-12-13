@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace FrontEnd
+namespace TrabalhoFinal._03_Entidades.DTOS
 {
     public class UsuarioLoginDTO
     {
-        public string Username { get; set; }
-        public string Senha { get; set; }
+       
+            public string Username { get; set; }
+            public string Senha { get; set; }
+        
     }
 }
