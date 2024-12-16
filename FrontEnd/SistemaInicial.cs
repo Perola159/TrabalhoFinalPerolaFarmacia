@@ -143,7 +143,7 @@ namespace FrontEnd
                             "\n 2- Finalizar compra");
                         opcao = int.Parse(Console.ReadLine());
                     }
-                    List<ReadCarrinhoDTO> carrinhosDTO = _carrinhoUC.ListarCarrinhoUsuarioLogado(UsuarioLogado.Id);
+                    List<ReadCarrinhoDTO> carrinhosDTO = _carrinhoUC.ListarCarrinhoUsuarioLogado();
                     foreach (ReadCarrinhoDTO car in carrinhosDTO)
                     {
                         Console.WriteLine(car.ToString());
@@ -155,7 +155,7 @@ namespace FrontEnd
         public void FinalizarCompra()
         {
             
-            List<ReadCarrinhoDTO> carrinhosDTO = _carrinhoUC.ListarCarrinhoUsuarioLogado(UsuarioLogado.Id);
+            List<ReadCarrinhoDTO> carrinhosDTO = _carrinhoUC.ListarCarrinhoUsuarioLogado();
             decimal totalCompra = carrinhosDTO.Sum(c => c.PrecoTotal);
 
             Console.WriteLine($"O total da compra é: R$ {totalCompra:F2}");
